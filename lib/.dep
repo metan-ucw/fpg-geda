@@ -1,0 +1,14 @@
+pcb_backend.o: pcb_backend.c pcb_backend.h
+fpg_primitives.o: fpg_primitives.c fpg_primitives.h fpg_units.h \
+  pcb_backend.h
+fpg_symbol_coil.o: fpg_symbol_coil.c fpg_symbol_coil.h fpg_primitives.h \
+  fpg_units.h
+fpg_symbol_cap.o: fpg_symbol_cap.c fpg_symbol_cap.h fpg_symbol.h \
+  fpg_primitives.h fpg_units.h
+fpg_symbol_resistor.o: fpg_symbol_resistor.c fpg_primitives.h fpg_units.h \
+  fpg_symbol_resistor.h
+fpg_symbol_diode.o: fpg_symbol_diode.c fpg_primitives.h fpg_units.h \
+  fpg_symbol.h fpg_symbol_diode.h
+fpg_symbol.o: fpg_symbol.c fpg_symbol.h fpg_primitives.h fpg_units.h
+fpg_metadata.o: fpg_metadata.c fpg_metadata.h pcb_backend.h
+fpg_utils.o: fpg_utils.c fpg_utils.h

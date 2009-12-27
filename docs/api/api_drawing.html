@@ -1,0 +1,67 @@
+<html>
+<body>
+
+<h1>Drawing API</h1>
+
+<table border="1px" bordercolor="black">
+ <tr>
+  <td>
+   <a href="#fpg_set_line_thickness">void fpg_set_line_thickness(uint32_t thickness);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_get_line_thickness">uint32_t fpg_get_line_thickness(void);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_set_origin">void fpg_set_origin(int32_t x, int32_t y);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_add_origin">void fpg_add_origin(int32_t x, int32_t y);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_get_origin">void fpg_get_origin(int32_t *x, int32_t *y);</a>
+  </td>
+ </tr>
+</table>
+
+<br>
+
+<a name=fpg_set_line_thickness><pre><font color="green">void</font> fpg_set_line_thickness(<font color="green">uint32_t</font> thickness);</pre></a>
+<ul>
+ <li>Set thickness for all lines.</li>
+ <li>Depends on units set by <a href="api_element.html#fpg_set_units">fpg_set_units()</a></li>
+</ul>
+
+<a name=fpg_get_line_thickness><pre><font color="green">uint32_t</font> fpg_get_line_thickness(<font color="green">void</font>);</pre></a>
+<ul>
+ <li>Returns current line thickness.</li>
+</ul>
+
+<a name=fpg_set_origin><pre><font color="green">void</font> fpg_set_origin(<font color="green">int32_t</font> x, <font color="green">int32_t</font> y);</pre></a>
+<ul>
+ <li>Set relative origin point.</li>
+ <li>Depends on units set by <a href="api_element.html#fpg_set_units">fpg_set_units()</a></li>
+</ul>
+
+<a name=fpg_add_origin><pre><font color="green">void</font> fpg_add_origin(<font color="green">int32_t</font> x, <font color="green">int32_t</font> y);</pre></a>
+<ul>
+ <li>Move relative origin point.</li>
+ <li>Depends on units set by <a href="api_element.html#fpg_set_units">fpg_set_units()</a></li>
+</ul>
+
+<a name=fpg_get_origin><pre><font color="green">void</font> fpg_get_origin(<font color="green">int32_t</font> *x, <font color="green">int32_t</font> *y);</pre></a>
+<ul>
+ <li>Returns possition of relative origin point.</li>
+ <li>Depends on units set by <a href="api_element.html#fpg_set_units">fpg_set_units()</a></li>
+</ul>
+
+
+</body>
+</html>

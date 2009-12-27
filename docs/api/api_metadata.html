@@ -1,0 +1,97 @@
+<html>
+<body>
+
+<table border="1px" bordercolor="black" frame="void">
+ <tr>
+  <td>
+   <a href="#FPG_METADATA_DEFAULT">FPG_METADATA_DEFAULT(author, description);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_author">void fpg_author(const char *author);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_description">void fpg_description(const char *desc);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_dist_license">void fpg_dist_license(const char *license);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_use_license">void fpg_use_license(const char *license);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_copyright">void fpg_copyright(const char *copyright);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_metadata">void fpg_metadata(const char *key, const char *value);</a>
+  </td>
+ </tr>
+</table>
+
+<br>
+
+<a name=FPG_METADATA_DEFAULT><pre>FPG_METADATA_DEFAULT(author, description);</pre></a>
+<ul>
+ <li>Macro that fills all metadata accordingly to author and description.</li>
+ <li>Default license is GPLv2</li>
+ <li>Author is automatically copyright holder.</li>
+ <li>Use this one to add metadata to footprint unless you want to set different license or copyright holder.</li>
+</ul>
+<br>
+
+<a name=fpg_author><pre><font color="green">void</font> fpg_author(<font color="green">const char</font> *author);</pre></a>
+<ul>
+ <li>Set footprint author, fill in your name here.</li>
+ <li>Preferably use <a href="#FPG_METADATA_DEFAULT">FPG_METADATA_DEFAULT()</a>.</li>
+</ul>
+<br>
+
+<a name=fpg_description><pre><font color="green">void</font> fpg_description(<font color="green">const char</font> *desc);</pre></a>
+<ul>
+ <li>Set footprint description.</li>
+ <li>Usually something like "Resistor 0207." or "Faston 4.8 90st.".</li>
+ <li>Preferably use <a href="#FPG_METADATA_DEFAULT">FPG_METADATA_DEFAULT()</a>.</li>
+</ul>
+<br>
+
+<a name=fpg_dist_license><pre><font color="green">void</font> fpg_dist_license(<font color="green">const char</font> *license);</pre></a>
+<ul>
+ <li>Set license for distribution.</li>
+ <li>Preferably use <a href="#FPG_METADATA_DEFAULT">FPG_METADATA_DEFAULT()</a> that predefines GPLv2 as license for footprint.</li>
+</ul>
+<br>
+
+<a name=fpg_use_license><pre><font color="green">void</font> fpg_use_license(<font color="green">const char</font> *license);</pre></a>
+<ul>
+ <li>Set license for use.</li>
+ <li>Preferably use <a href="#FPG_METADATA_DEFAULT">FPG_METADATA_DEFAULT()</a> that predefines GPLv2 as license for footprint.</li>
+</ul>
+<br>
+
+<a name=fpg_copyright><pre><font color="green">void</font> fpg_copyright(<font color="green">const char</font> *copyright);</pre></a>
+<ul>
+ <li>Set copyright holder.</li>
+ <li>Preferably use <a href="#FPG_METADATA_DEFAULT">FPG_METADATA_DEFAULT()</a> that use author as copyright holder.</li>
+</ul>
+<br>
+
+<a name=fpg_metadata><pre><font color="green">void</font> fpg_metadata(<font color="green">const char</font> *key, <font color="green">const char</font> *value);</pre></a>
+<ul>
+ <li>Set generic metadata.</li>
+ <li>Use this one to add any other metadata not listed above.</li>
+</ul>
+<br>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<html>
+<body>
+
+<h1>Element API</h1>
+
+<table border="1px" bordercolor="black">
+ <tr>
+  <td>
+   <a href="#fpg_element_begin">void fpg_emement_begin(const char *desc);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_element_end">void fpg_emement_end(const char *desc);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_set_file">void fpg_set_file(FILE *f);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_get_file">FILE *fpg_get_file(void);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_set_units">void fpg_set_units(enum fpg_units units);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_get_units">enum fpg_units fpg_get_units(void);</a>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <a href="#fpg_units">enum fpg_units;</a>
+  </td>
+ </tr>
+</table>
+
+<br>
+
+<a name=fpg_element_begin><pre><font color="green">void</font> fpg_element_begin(<font color="green">const char</font>*desc);</pre></a>
+<ul>
+ <li>Cause opening element definition.</li>
+ <li>Must be called before any drawing function is called otherwise the generated footprint would be broken.</li>
+</ul>
+<br>
+
+<a name=fpg_element_end><pre><font color="green">void</font> fpg_element_end(<font color="green">void</font>);</pre></a>
+<ul>
+ <li>Cause element to close.</li>
+ <li>Must be called when footprint generating is done.</li>
+</ul>
+<br>
+
+<a name=fpg_set_file><pre><font color="green">void</font> fpg_set_file(<font color="green">FILE</font> *f);</pre></a>
+<ul>
+ <li>Set file handle to write footprint to.</li>
+ <li>Must be called before any drawing function is called.</li>
+ <li>Changing file in the middle of generating footprint would lead to broken fooptrint.</li>
+ <li>You must close this file with fclose() after footprint was generated, this is not done automatically.</li>
+ <li><b>Tip:</b> you can pass <i>stdout</i> parameter for footprint to be written to stdout.</li>
+</ul>
+<br>
+
+<a name=fpg_get_file><pre><font color="green">void</font> fpg_set_file(<font color="green">FILE</font> *f);</pre></a>
+<ul>
+ <li>Get file handle we are writing footprint to.</li>
+</ul>
+<br>
+
+<a name=fpg_set_units><pre><font color="green">void</font> fpg_set_units(<font color="green">enum</font> fpg_units units);</pre></a>
+<ul>
+ <li>Set units we are working with.</li>
+ <li>It's safe to change units while generating footprint.</li>
+ <li>For default we are working with pcb default backend format that's mils/100.</li>
+ <li>See <a href=#fpg_units>enum fpg_units;</a></li>
+</ul>
+<br>
+
+<a name=fpg_get_units><pre><font color="green">enum</font> fpg_units fpg_get_units(<font color="green">void</font>);</pre></a>
+<ul>
+ <li>Get units we are working with.</li>
+ <li>See <a href=#fpg_units>enum fpg_units;</a></li>
+</ul>
+<br>
+
+<a name=fpg_units><pre><font color="green">enum</font> fpg_units;</pre></a>
+<ul>
+ <li><i>fpg_mm</i>  milimeters.</li>
+ <li><i>fpg_um</i>  micrometers.</li>
+ <li><i>fpg_mil</i> mils</li>
+ <li><i>fpg_pcb</i> pcb backend format mils/100</li>
+ <li><b>Warning:</b> all drawing functions takes integer numbers as 
+ parameters, so choose units wisely in order not to create huge rounding
+ errors.</li>
+</ul>
+<br>
+
+</body>
+</html>
