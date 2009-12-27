@@ -18,7 +18,7 @@ prepare()
 {
 	echo "CRT $ODIR/$1/"
 	rm -rf $ODIR/$1
-	mkdir $ODIR/$1
+	mkdir -p $ODIR/$1
 }
 
 #
