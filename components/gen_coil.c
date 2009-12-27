@@ -49,13 +49,12 @@ void do_gen_coil(int32_t a, int32_t b)
 
 	snprintf(buf, 256, "Talema radial coil %imm x %imm.", a, b);
 
-//	fpg_element_begin("", buf, "", "", 10000, 10000, 2500, 1000);
 	fpg_element_begin(buf);
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
 	
-	fpg_pin_default(0, 0, "Pin_1", "1", "");
-	fpg_pin_default(0, 1000*b, "Pin_2", "2", "");
+	fpg_pin_simple(0,      0, 700, 2000, "Pin_1", "1", "");
+	fpg_pin_simple(0, 1000*b, 700, 2000, "Pin_2", "2", "");
 
 	fpg_coil(0, 0, 0, 1000*b, 3); 
 	
