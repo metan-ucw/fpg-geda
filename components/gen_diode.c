@@ -27,12 +27,14 @@
 /*      
  * DO35
  *
- *            | - 3.5 mm - |
+ *            | 3.5 mm |
  *
- *  0.3 mm     ------------  - - - - - - -
- * -----------| ||         |------------ 1.6 mm
- *             ------------  - - - - - - -
- *  
+ *  0.3 mm     --------  - - - - - - -
+ * -----------| ||     |------------ 1.6 mm
+ *             --------  - - - - - - -
+ *  PIN1                        PIN2
+ *            ___|/|___
+ *               |\|
  */
 void do_gen_DO35(void)
 {
@@ -45,7 +47,7 @@ void do_gen_DO35(void)
 	
 	fpg_pin_simple(   0, 0, 500, 1600, "Pin_1", "1", "square");
 	fpg_pin_simple(5000, 0, 500, 1600, "Pin_2", "2", "");
-	fpg_diode(0, 0, 5000, 0, FPG_DIODE_GEN);
+	fpg_diode(5000, 0, -5000, 0, FPG_DIODE_GEN);
 
 	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
 	fpg_element_end();
@@ -74,21 +76,78 @@ void do_gen_DO35_stay(void)
 	fpg_element_end();
 }
 
+/*      
+ * DO41
+ *
+ *            |- 5 mm -|
+ *
+ *  0.7 mm    +--------+ - - - - - - -
+ * -----------|X|      |------------ 2.7 mm
+ *            +--------+ - - - - - - -
+ *  PIN1                        PIN2
+ *            ___|/|___
+ *               |\|
+ */
+void do_gen_DO41(void)
+{
+	const char *desc = "Diode DO41";
+
+	fpg_element_begin(desc);
+	
+	fpg_set_line_thickness(1000);
+	fpg_set_units(fpg_um);
+	
+	fpg_pin_simple(    0, 0, 800, 2500, "Pin_1", "1", "square");
+	fpg_pin_simple(10000, 0, 800, 2500, "Pin_2", "2", "");
+	fpg_diode(10000, 0, -10000, 0, FPG_DIODE_GEN);
+
+	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
+	fpg_element_end();
+}
+
+/*
+ * Staying DO41 diode, space between pins is 1 mm
+ */
+void do_gen_DO41_stay(void)
+{
+	const char *desc = "Diode DO41 staying";
+
+	fpg_element_begin(desc);
+	
+	fpg_set_line_thickness(1000);
+	fpg_set_units(fpg_um);
+	
+	fpg_pin_simple(0, 0, 800, 2500, "Pin_1", "1", "square");
+	fpg_circle_origin(1350);
+	
+	fpg_hline(1350, 0, 1750);
+
+	fpg_pin_simple(3500, 0, 800, 2500, "Pin_2", "2", "");
+
+	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
+	fpg_element_end();
+}
 
 const char *diode_sizes[] = {
 	"DO35",
 	"DO35_stay",
+	"DO41",
+	"DO41_stay",
 	NULL
 }; 
 
 const char *diode_desc[] = {
 	"Diode DO35",
 	"Diode DO35 staying",
+	"Diode DO41",
+	"Diode DO41 staying",
 };
 
 void (*diode_gen[])(void) = {
 	do_gen_DO35,
 	do_gen_DO35_stay,
+	do_gen_DO41,
+	do_gen_DO41_stay,
 };
 
 int main(int argc, char *argv[])
