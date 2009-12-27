@@ -47,12 +47,13 @@ void do_gen_dip(int8_t n, uint16_t thickness)
 {
 	char buf[256];
 	char name[256];
+	char desc[256];
 	uint8_t d = 50;
 	int i;
 
-	snprintf(buf, 256, "DIP %u", 2*n);
+	snprintf(desc, 256, "DIP %u (%u)", 2*n, thickness);
 	
-	fpg_element_begin(buf);
+	fpg_element_begin(desc);
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_mil);
 	
@@ -80,8 +81,7 @@ void do_gen_dip(int8_t n, uint16_t thickness)
 	fpg_add_origin(-d-thickness/2, 0);
 	fpg_arc(0, 0, thickness/6, 0, 180); 
 
-	snprintf(buf, 256, "DIP %u.", 2*n);
-	FPG_METADATA_DEFAULT("Cyril Hrubis", buf);
+	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
 
 	fpg_element_end();
 }
