@@ -43,10 +43,10 @@ void do_gen_R0207(void)
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
 	
-	fpg_pin_simple(   0, 0, 550, 2000, "Pin_1", "1", "");
-	fpg_pin_simple(6500, 0, 550, 2000, "Pin_2", "2", "");
+	fpg_pin_simple(   0, 0, 600, 2000, "Pin_1", "1", "");
+	fpg_pin_simple(10000, 0, 600, 2000, "Pin_2", "2", "");
 	
-	fpg_resistor(0, 0, 6500, 0, FPG_RESISTOR_EU);
+	fpg_resistor(0, 0, 10000, 0, FPG_RESISTOR_EU);
 
 	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
 	fpg_element_end();
@@ -61,11 +61,11 @@ void do_gen_R0207_stay(void)
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
 	
-	fpg_pin_simple(0, 0, 550, 2000, "Pin_1", "1", "");
+	fpg_pin_simple(0, 0, 600, 2000, "Pin_1", "1", "");
 	fpg_circle_origin(1250);
-	fpg_hline(1250, 0, 975);
+	fpg_hline(1250, 0, 950);
 
-	fpg_pin_simple(2500, 0, 550, 2000, "Pin_2", "2", "");
+	fpg_pin_simple(2500, 0, 600, 2000, "Pin_2", "2", "");
 
 	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
 	fpg_element_end();
@@ -91,8 +91,8 @@ void do_gen_R0204(void)
 	fpg_set_units(fpg_um);
 	
 	fpg_pin_simple(   0, 0, 550, 1600, "Pin_1", "1", "");
-	fpg_pin_simple(4300, 0, 550, 1600, "Pin_2", "2", "");
-	fpg_resistor(0, 0, 4300, 0, FPG_RESISTOR_EU);
+	fpg_pin_simple(6000, 0, 550, 1600, "Pin_2", "2", "");
+	fpg_resistor(0, 0, 6000, 0, FPG_RESISTOR_EU);
 
 	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
 	fpg_element_end();

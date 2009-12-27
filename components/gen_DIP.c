@@ -21,6 +21,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <getopt.h>
 #include "fpg_common.h"
 
 /*
@@ -32,51 +34,16 @@
  * |            /  /              |
  * |            \  \              |    |
  *  --           \  \             |
- *    )          /  /             |  0.285-315in
+ *    )          /  /             |  0.3 in or 0.6 for wide package
  *  --          /  /              |
  * |            \  \              |    |
  * |             \  \             |
  * --------------/  /--------------    |
  *   == == == == \  \ == == == ==  - - -
- *
+ *   |  |
+ *    0.1 in
  */
-void do_gen_dip(int8_t n)
-{
-	char buf[256];
-	char name[256];
-	uint8_t i;
-
-	snprintf(buf, 256, "DIP %u", n);
-
-	fpg_element_begin(buf);
-	fpg_set_line_thickness(1000);
-	fpg_set_units(fpg_mil);
-	
-	fpg_pin_default(0, 0, "Pin_1", "1", "square");
-
-	for (i = 1; i < n; i++) {
-		snprintf(name, 256, "Pin_%u", i+1);
-		snprintf(buf, 256, "%u", i+1);
-		fpg_pin_default(100*i, 0, name, buf, "");
-	}
-	
-	for (i = 1; i <= n; i++) {
-		snprintf(name, 256, "Pin_%u", n+i);
-		snprintf(buf, 256, "%u", n+i);
-		fpg_pin_default(100*(n-i), -300, name, buf, "");
-	}
-	
-	fpg_add_origin(-100, -400);
-
-	fpg_rectangle_origin(100*(n+1), 500);
-
-	snprintf(buf, 256, "DIP %u.", n);
-	FPG_METADATA_DEFAULT("Cyril Hrubis", buf);
-
-	fpg_element_end();
-}
-
-void gen_dip(int8_t n, uint16_t thickness)
+void do_gen_dip(int8_t n, uint16_t thickness)
 {
 	char buf[256];
 	char name[256];
@@ -89,18 +56,18 @@ void gen_dip(int8_t n, uint16_t thickness)
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_mil);
 	
-	fpg_pin_default(0, 0, "Pin_1", "1", "square");
+	fpg_pin_simple(0, 0, 25, 80, "Pin_1", "1", "square");
 
 	for (i = 1; i < n; i++) {
 		snprintf(name, 256, "Pin_%u", i+1);
 		snprintf(buf, 256, "%u", i+1);
-		fpg_pin_default(0, 100*i, name, buf, "");
+		fpg_pin_simple(0, 100*i, 25, 80, name, buf, "");
 	}
 
 	for (i = 0; i < n; i++) {
 		snprintf(name, 256, "Pin_%u", n+1+i);
 		snprintf(buf, 256, "%u", n+1+i);
-		fpg_pin_default(thickness, 100*(n-1-i), name, buf, "");
+		fpg_pin_simple(thickness, 100*(n-1-i), 25, 80, name, buf, "");
 	}
 
 	fpg_add_origin(-d, -d);
@@ -119,25 +86,46 @@ void gen_dip(int8_t n, uint16_t thickness)
 	fpg_element_end();
 }
 
+static void print_help(void)
+{
+	fprintf(stderr, "./get_DIP -n x [-w]\n");
+	fprintf(stderr, "-n odd number of pins; eg: 14\n");
+	fprintf(stderr, "-w wide package (0.6 in, default is 0.3)\n");
+}
+
 int main(int argc, char *argv[])
 {
-	uint8_t n;
+	uint8_t n = 0;
+	uint16_t size = 300;
+	int opt;
 
 	fpg_set_file(stdout);
 
-	if (argc != 2) {
-		fprintf(stderr, "Takes number of pins in dip package as argument.\n");
+	while ((opt = getopt(argc, argv, "n:w")) != -1) {
+		switch (opt) {
+			case 'n':
+				n = atoi(optarg); 
+			break;
+			case 'w':
+				size = 600;
+			break;
+			default:
+				print_help();
+				return 1;
+		}
+	}
+
+	if (n == 0) {
+		print_help();
 		return 1;
 	}
-	
-	n = atoi(argv[1]);
 
 	if (n%2) {
 		fprintf(stderr, "Takes only even numbers as parameter.\n");
 		return 1;
 	}
 
-	gen_dip(n/2, 300);
+	do_gen_dip(n/2, size);
 	
 	return 0;
 }
