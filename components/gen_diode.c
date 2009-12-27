@@ -41,10 +41,10 @@ void do_gen_DO35(void)
 	const char *desc = "Diode DO35";
 
 	fpg_element_begin(desc);
-	
+
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(   0, 0, 500, 1600, "Pin_1", "1", "square");
 	fpg_pin_simple(5000, 0, 500, 1600, "Pin_2", "2", "");
 	fpg_diode(5000, 0, -5000, 0, FPG_DIODE_GEN);
@@ -61,13 +61,13 @@ void do_gen_DO35_stay(void)
 	const char *desc = "Diode DO35 staying";
 
 	fpg_element_begin(desc);
-	
+
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(0, 0, 500, 1600, "Pin_1", "1", "square");
 	fpg_circle_origin(800);
-	
+
 	fpg_hline(800, 0, 1050);
 
 	fpg_pin_simple(2100, 0, 500, 1600, "Pin_2", "2", "");
@@ -93,10 +93,10 @@ void do_gen_DO41(void)
 	const char *desc = "Diode DO41";
 
 	fpg_element_begin(desc);
-	
+
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(    0, 0, 800, 2500, "Pin_1", "1", "square");
 	fpg_pin_simple(10000, 0, 800, 2500, "Pin_2", "2", "");
 	fpg_diode(10000, 0, -10000, 0, FPG_DIODE_GEN);
@@ -113,13 +113,13 @@ void do_gen_DO41_stay(void)
 	const char *desc = "Diode DO41 staying";
 
 	fpg_element_begin(desc);
-	
+
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(0, 0, 800, 2500, "Pin_1", "1", "square");
 	fpg_circle_origin(1350);
-	
+
 	fpg_hline(1350, 0, 1750);
 
 	fpg_pin_simple(3500, 0, 800, 2500, "Pin_2", "2", "");
@@ -128,11 +128,67 @@ void do_gen_DO41_stay(void)
 	fpg_element_end();
 }
 
+/*      
+ * DO201
+ *
+ *            |- 8 mm -|
+ *            
+ *  1 mm      +--------+ - - - - - - - 
+ * ___________|X|      |____________
+ *            |X|      |             5 mm
+ *            +--------+ - - - - - - -
+ *  PIN1                        PIN2
+ *            ___|/|___
+ *               |\|
+ */
+void do_gen_DO201(void)
+{
+	const char *desc = "Diode DO201";
+
+	fpg_element_begin(desc);
+
+	fpg_set_line_thickness(1000);
+	fpg_set_units(fpg_um);
+
+	fpg_pin_simple(    0, 0, 1100, 4000, "Pin_1", "1", "square");
+	fpg_pin_simple(15000, 0, 1100, 4000, "Pin_2", "2", "");
+	fpg_diode(15000, 0, -15000, 0, FPG_DIODE_GEN);
+
+	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
+	fpg_element_end();
+}
+
+/*
+ * Staying DO201 diode, space between pins is 2 mm
+ */
+void do_gen_DO201_stay(void)
+{
+	const char *desc = "Diode DO201 staying";
+
+	fpg_element_begin(desc);
+
+	fpg_set_line_thickness(1000);
+	fpg_set_units(fpg_um);
+
+	fpg_pin_simple(0, 0, 1100, 4000, "Pin_1", "1", "square");
+	fpg_circle_origin(2500);
+
+	fpg_hline(2500, 0, 2000 + 950);
+
+	fpg_pin_simple(6000, 0, 1100, 4000, "Pin_2", "2", "");
+
+	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
+	fpg_element_end();
+}
+
+
 const char *diode_sizes[] = {
 	"DO35",
 	"DO35_stay",
 	"DO41",
 	"DO41_stay",
+	"DO201",
+	"DO201_stay",
 	NULL
 }; 
 
@@ -141,6 +197,8 @@ const char *diode_desc[] = {
 	"Diode DO35 staying",
 	"Diode DO41",
 	"Diode DO41 staying",
+	"Diode DO201",
+	"Diode DO201 staying",
 };
 
 void (*diode_gen[])(void) = {
@@ -148,6 +206,8 @@ void (*diode_gen[])(void) = {
 	do_gen_DO35_stay,
 	do_gen_DO41,
 	do_gen_DO41_stay,
+	do_gen_DO201,
+	do_gen_DO201_stay,
 };
 
 int main(int argc, char *argv[])
