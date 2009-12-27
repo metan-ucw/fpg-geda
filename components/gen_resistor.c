@@ -52,6 +52,9 @@ void do_gen_R0207(void)
 	fpg_element_end();
 }
 
+/*
+ * R0207 staying, space between pins is 0.7 mm.
+ */
 void do_gen_R0207_stay(void)
 {
 	const char *desc = "Resistor R0207 staying";
@@ -63,9 +66,9 @@ void do_gen_R0207_stay(void)
 	
 	fpg_pin_simple(0, 0, 600, 2000, "Pin_1", "1", "");
 	fpg_circle_origin(1250);
-	fpg_hline(1250, 0, 950);
+	fpg_hline(1250, 0, 1150);
 
-	fpg_pin_simple(2500, 0, 600, 2000, "Pin_2", "2", "");
+	fpg_pin_simple(2700, 0, 600, 2000, "Pin_2", "2", "");
 
 	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
 	fpg_element_end();
@@ -98,6 +101,9 @@ void do_gen_R0204(void)
 	fpg_element_end();
 }
 
+/*
+ * R0204 staying space between pins is 0.5 mm.
+ */
 void do_gen_R0204_stay(void)
 {
 	const char *desc = "Resistor R0204 staying";

@@ -1,4 +1,4 @@
-all: do_enter gen_jamicon gen_talema gen_heat_sinks gen_connectors gen_TO220 gen_DIP gen_resistor do_leave
+all: do_enter gen_jamicon gen_talema gen_heat_sinks gen_connectors gen_TO220 gen_DIP gen_resistor gen_diode do_leave
 
 do_enter:
 	@echo -e "\n*** Generating symbols ***"
@@ -36,3 +36,7 @@ gen_DIP:
 gen_resistor:
 	@echo
 	@./gen_resistor.sh
+
+gen_diode:
+	@echo
+	@./gen_diode.sh
