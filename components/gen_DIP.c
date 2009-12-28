@@ -51,7 +51,7 @@ void do_gen_dip(int8_t n, uint16_t thickness)
 	uint8_t d = 50;
 	int i;
 
-	snprintf(desc, 256, "DIP %u (%u)", 2*n, thickness);
+	snprintf(desc, 256, "DIP %u (%u mils wide)", 2*n, thickness);
 	
 	fpg_element_begin(desc);
 	fpg_set_line_thickness(1000);
