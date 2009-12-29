@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 	fpg_set_file(stdout);
 
 	if (argc != 2) {
-		fprintf(stderr, "Takes one argument, either resistor type or -d\n");
+		fprintf(stderr, "Takes one argument, either pot type or -d\n");
 		return 1;
 	}
 
@@ -100,7 +100,7 @@ int main(int argc, char *argv[])
 	type = fpg_utils_find_type(pot_type, argv[1]);
 
 	if (type == -1) {
-		fprintf(stderr, "Invalid resistory type.\n");
+		fprintf(stderr, "Invalid pot type.\n");
 		fpg_utils_print_help(pot_type, pot_desc);	
 		return -1;
 	}
