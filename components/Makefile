@@ -5,7 +5,7 @@ LDFLAGS=-lm
 
 BIN=gen_heat_sinks gen_radial_can_cap gen_large_can_cap gen_coil\
     gen_ch_conn gen_TO220 gen_DIP gen_wob gen_resistor \
-    gen_diode gen_cap
+    gen_diode gen_cap gen_pot
 
 OBJ=$(BIN:=.o)
 

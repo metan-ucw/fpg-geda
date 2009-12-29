@@ -4,7 +4,7 @@
 #
 # (C) Cyril Hrubis 2009
 #
-# Generates footprints for TO220 package variants.
+# Generates footprints for diodes.
 #
 
 DIR=diode

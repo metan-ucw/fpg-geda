@@ -4,7 +4,7 @@
 #
 # (C) Cyril Hrubis 2009
 #
-# Generates coonector footprints
+# Generates connector footprints
 #
 
 DIR=connectors
