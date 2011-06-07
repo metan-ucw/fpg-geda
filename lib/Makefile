@@ -31,4 +31,4 @@ test: $(SOURCES) $(HEADERS) libfootprint.a test.o
 
 # clean!
 clean:
-	rm -rf libfootprint.a $(OBJECTS) test.o test test.fp test.fp-
+	rm -rf libfootprint.a $(OBJECTS) test.o test test.fp test.fp- .dep
