@@ -26,7 +26,7 @@
 /*
  *  Generate radial can capacitor.
  *
- *  |-  Dmm  -|
+ *  |-  Dum  -|
  *
  *   ---------
  *  | | |     |
@@ -40,23 +40,28 @@
  *     |   |
  *     |   |
  *       
- *     |Pmm|
+ *     |Pum|
  *  
  */
 void do_gen_large_cap(uint32_t D, uint32_t P)
 {
 	char buf[256];
 
-	snprintf(buf, 256, "Radial capacitor can %imm", D);
+	snprintf(buf, 256, "Radial capacitor can %.2fmm", ((float) D) / 1000);
 
 //	fpg_element_begin("", buf, "", "", 1000000, 1000000, 2500, 1000);
 	fpg_element_begin(buf);
 	
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
-	fpg_pin_default(0, 0, "Pin_1", "1", "square");
-	fpg_pin_default(P, 0, "Pin_2", "2", "");
+
+	if (D < 8000) {
+		fpg_pin_small(0, 0, "Pin_1", "1", "square");
+		fpg_pin_small(P, 0, "Pin_2", "2", "");
+	} else {
+		fpg_pin_default(0, 0, "Pin_1", "1", "square");
+		fpg_pin_default(P, 0, "Pin_2", "2", "");
+	}
 
 	/* draw capacitor symbol */
 	fpg_cap(0, 0, P, 0, FPG_CAP_POL_A | FPG_CAP_PLUS);

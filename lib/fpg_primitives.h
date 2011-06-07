@@ -165,6 +165,7 @@ void fpg_pin_simple(int32_t x, int32_t y, uint32_t drill, uint32_t copper, const
 /* 
  * Default size pin, should fit for standart SMT components.
  */
+void fpg_pin_small(int32_t x, int32_t y, const char *name, const char *number, const char *sflags);
 void fpg_pin_default(int32_t x, int32_t y, const char *name, const char *number, const char *sflags);
 void fpg_pin_big(int32_t x, int32_t y, const char *name, const char *number, const char *sflags);
 

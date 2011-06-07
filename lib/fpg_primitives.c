@@ -405,22 +405,37 @@ void fpg_arc_origin(int32_t r, int16_t start_angle, int16_t delta_angle)
 
 void fpg_pin(int32_t x, int32_t y, uint32_t thickness, uint32_t clearance, uint32_t mask, uint32_t drill, const char *name, const char *number, const char *sflags)
 {
-	pin(origin_x + c_int32(x), origin_y + c_int32(y), c_uint32(thickness), c_uint32(clearance), c_uint32(mask), c_uint32(drill), name, number, sflags);
+	pin(origin_x + c_int32(x), origin_y + c_int32(y),
+	    c_uint32(thickness), c_uint32(clearance), c_uint32(mask), c_uint32(drill),
+	    name, number, sflags);
 }
 
 void fpg_pin_simple(int32_t x, int32_t y, uint32_t drill, uint32_t copper, const char *name, const char *number, const char *sflags)
 {
-	pin(origin_x + c_int32(x), origin_y + c_int32(y), c_uint32(copper), c_uint32(1.10*copper), c_uint32(copper), c_uint32(drill), name, number, sflags);
+	pin(origin_x + c_int32(x), origin_y + c_int32(y),
+	    c_uint32(copper), c_uint32(1.10*copper), c_uint32(copper), c_uint32(drill),
+	    name, number, sflags);
+}
+
+void fpg_pin_small(int32_t x, int32_t y, const char *name, const char *number, const char *sflags)
+{
+	pin(origin_x + c_int32(x), origin_y + c_int32(y),
+	    FPG_MM_TO_PCB(1), FPG_MM_TO_PCB(2), FPG_MM_TO_PCB(1), FPG_MM_TO_PCB(0.5),
+	    name, number, sflags);
 }
 
 void fpg_pin_default(int32_t x, int32_t y, const char *name, const char *number, const char *sflags)
 {
-	pin(origin_x + c_int32(x), origin_y + c_int32(y), FPG_MM_TO_PCB(2), FPG_MM_TO_PCB(3), FPG_MM_TO_PCB(2), FPG_MM_TO_PCB(0.7), name, number, sflags);
+	pin(origin_x + c_int32(x), origin_y + c_int32(y),
+	    FPG_MM_TO_PCB(2), FPG_MM_TO_PCB(3), FPG_MM_TO_PCB(2), FPG_MM_TO_PCB(0.7),
+	    name, number, sflags);
 }
 
 void fpg_pin_big(int32_t x, int32_t y, const char *name, const char *number, const char *sflags)
 {
-	pin(origin_x + c_int32(x), origin_y + c_int32(y), FPG_MM_TO_PCB(3), FPG_MM_TO_PCB(4), FPG_MM_TO_PCB(3), FPG_MM_TO_PCB(1.7), name, number, sflags);
+	pin(origin_x + c_int32(x), origin_y + c_int32(y),
+	    FPG_MM_TO_PCB(3), FPG_MM_TO_PCB(4), FPG_MM_TO_PCB(3), FPG_MM_TO_PCB(1.7),
+	    name, number, sflags);
 }
 
 void fpg_element_begin(const char *desc)
