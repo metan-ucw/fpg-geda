@@ -13,7 +13,7 @@ DIR=DIP
 
 prepare $DIR
 
-SLIM="6 8 14 16 18 20 24 28"
+SLIM="6 8 10 14 16 18 20 24 28"
 WIDE="24 28 32 40 64"
 
 for TYPE in $SLIM; do
