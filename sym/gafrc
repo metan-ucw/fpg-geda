@@ -1,4 +1,5 @@
 (component-library "./basic/")
-(component-library "./diode/")
 (component-library "./power/")
+(component-library "./diode/")
+(component-library "./transistor/")
 (component-library "./relay/")
