@@ -3,3 +3,4 @@
 (component-library "./diode/")
 (component-library "./transistor/")
 (component-library "./relay/")
+(component-library "./linear/")
