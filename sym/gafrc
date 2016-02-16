@@ -1,7 +1,11 @@
-(component-library "./basic/")
-(component-library "./power/")
-(component-library "./diode/")
-(component-library "./transistor/")
-(component-library "./relay/")
-(component-library "./linear/")
-(component-library "./connector/")
+
+; disable default symbols
+(reset-component-library)
+
+; load titleblock symbol
+(component-library "/usr/share/gEDA/sym/titleblock/")
+
+; load our symbols
+(for-each (lambda (x)
+           (component-library (build-path "../sym/" x))) 
+  '("basic" "connector" "diode" "linear" "power" "relay" "transistor"))
