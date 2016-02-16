@@ -1,0 +1,13 @@
+*.o
+gen_DIP
+gen_TO220
+gen_cap
+gen_ch_conn
+gen_coil
+gen_diode
+gen_heat_sinks
+gen_large_can_cap
+gen_pot
+gen_radial_can_cap
+gen_resistor
+gen_wob
