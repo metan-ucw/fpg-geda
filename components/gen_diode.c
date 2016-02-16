@@ -24,7 +24,7 @@
 #include <string.h>
 #include "fpg_common.h"
 
-/*      
+/*
  * DO35
  *
  *            | 3.5 mm |
@@ -76,7 +76,7 @@ void do_gen_DO35_stay(void)
 	fpg_element_end();
 }
 
-/*      
+/*
  * DO41
  *
  *            |- 5 mm -|
@@ -128,12 +128,12 @@ void do_gen_DO41_stay(void)
 	fpg_element_end();
 }
 
-/*      
+/*
  * DO201
  *
  *            |- 8 mm -|
- *            
- *  1 mm      +--------+ - - - - - - - 
+ *
+ *  1 mm      +--------+ - - - - - - -
  * ___________|X|      |____________
  *            |X|      |             5 mm
  *            +--------+ - - - - - - -
@@ -190,7 +190,7 @@ const char *diode_sizes[] = {
 	"DO201",
 	"DO201_stay",
 	NULL
-}; 
+};
 
 const char *diode_desc[] = {
 	"Diode DO35",
@@ -230,7 +230,7 @@ int main(int argc, char *argv[])
 
 	if (type == -1) {
 		fprintf(stderr, "Invalid diode type.\n");
-		fpg_utils_print_help(diode_sizes, diode_desc);	
+		fpg_utils_print_help(diode_sizes, diode_desc);
 		return -1;
 	}
 

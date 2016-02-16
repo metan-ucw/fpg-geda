@@ -24,7 +24,7 @@
 #include <string.h>
 #include "fpg_common.h"
 
-/*      
+/*
  * R0207
  *
  *            | - 6.3 mm - |
@@ -32,20 +32,20 @@
  *            +==--------==+ - - - - - - -
  * -----------|            |------------ 2.5 mm
  *            +==--------==+ - - - - - - -
- *  
+ *
  */
 void do_gen_R0207(void)
 {
 	const char *desc = "Resistor R0207";
 
 	fpg_element_begin(desc);
-	
+
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(   0, 0, 600, 2000, "Pin_1", "1", "");
 	fpg_pin_simple(10000, 0, 600, 2000, "Pin_2", "2", "");
-	
+
 	fpg_resistor(0, 0, 10000, 0, FPG_RESISTOR_EU);
 
 	FPG_METADATA_DEFAULT("Cyril Hrubis", desc);
@@ -58,12 +58,12 @@ void do_gen_R0207(void)
 void do_gen_R0207_stay(void)
 {
 	const char *desc = "Resistor R0207 staying";
-	
+
 	fpg_element_begin(desc);
-	
+
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(0, 0, 600, 2000, "Pin_1", "1", "");
 	fpg_circle_origin(1250);
 	fpg_hline(1250, 0, 1150);
@@ -74,7 +74,7 @@ void do_gen_R0207_stay(void)
 	fpg_element_end();
 }
 
-/*      
+/*
  * R0204
  *
  *            | - 4.1 mm - |
@@ -82,17 +82,17 @@ void do_gen_R0207_stay(void)
  *            +==--------==+ - - - - - - -
  * -----------|            |------------ 1.8 mm
  *            +==--------==+ - - - - - - -
- *  
+ *
  */
 void do_gen_R0204(void)
 {
 	const char *desc = "Resistor R0204";
 
 	fpg_element_begin(desc);
-	
+
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(   0, 0, 550, 1600, "Pin_1", "1", "");
 	fpg_pin_simple(6000, 0, 550, 1600, "Pin_2", "2", "");
 	fpg_resistor(0, 0, 6000, 0, FPG_RESISTOR_EU);
@@ -107,12 +107,12 @@ void do_gen_R0204(void)
 void do_gen_R0204_stay(void)
 {
 	const char *desc = "Resistor R0204 staying";
-	
+
 	fpg_element_begin(desc);
-	
+
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(0, 0, 550, 1600, "Pin_1", "1", "");
 	fpg_circle_origin(900);
 	fpg_hline(900, 0, 935);
@@ -125,18 +125,18 @@ void do_gen_R0204_stay(void)
 
 
 const char *resistor_sizes[] = {
-	"R0204", 
-	"R0204_stay", 
-	"R0207", 
-	"R0207_stay", 
+	"R0204",
+	"R0204_stay",
+	"R0207",
+	"R0207_stay",
 	NULL
-}; 
+};
 
 const char *resistor_desc[] = {
 	"R0204 0.4W",
 	"R0204 0.4W staying",
-	"R0207 0.6W", 
-	"R0207 0.6W staying", 
+	"R0207 0.6W",
+	"R0207 0.6W staying",
 };
 
 void (*resistor_gen[])(void) = {
@@ -166,7 +166,7 @@ int main(int argc, char *argv[])
 
 	if (type == -1) {
 		fprintf(stderr, "Invalid resistory type.\n");
-		fpg_utils_print_help(resistor_sizes, resistor_desc);	
+		fpg_utils_print_help(resistor_sizes, resistor_desc);
 		return -1;
 	}
 

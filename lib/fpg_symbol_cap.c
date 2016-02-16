@@ -45,14 +45,14 @@ void fpg_cap(int32_t x1, int32_t y1, int32_t x2, int32_t y2, uint8_t type)
 
 	if (type & FPG_CAP_PLUS) {
 		int oox, ooy;
-		
+
 		type &= ~FPG_CAP_PLUS;
 
 		fpg_get_origin_back(&oox, &ooy);
 		fpg_set_origin_back(ox, oy);
 
 		fpg_add_origin(x2 + vy/6 - vx/6, y2 - vx/6 - vy/6);
-	
+
 		fpg_plus_origin(vx/10, vy/10);
 
 		fpg_set_origin_back(oox, ooy);

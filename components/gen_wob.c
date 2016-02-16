@@ -27,7 +27,7 @@
  * Generates wob package. Usually used for bridge recfilters.
  *
  * There are some gEDA symbols for recfilter bridges, they hawe pins 1 and 2
- * for AC and 3 and 4 for DC, however plus and minus is not allways the same. 
+ * for AC and 3 and 4 for DC, however plus and minus is not allways the same.
  *
  *          |- - 9.3 mm - -|
  *
@@ -58,7 +58,7 @@
  *                    /
  *
  *                  /      4.6 - 5.6 mm
- *              ---------     
+ *              ---------
  *            /    (~)    \      /
  *          /               \
  *         |                 | /
@@ -96,7 +96,7 @@ int main(int argc, char *argv[] __attribute__ ((unused)))
 		fprintf(stderr, "Doesn't take any arguments.\n");
 		return 1;
 	}
-	
+
 	gen_wob();
 
 	return 0;

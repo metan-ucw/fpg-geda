@@ -52,11 +52,11 @@ void do_gen_dip(int8_t n, uint16_t thickness)
 	int i;
 
 	snprintf(desc, 256, "DIP %u (%u mils wide)", 2*n, thickness);
-	
+
 	fpg_element_begin(desc);
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_mil);
-	
+
 	fpg_pin_simple(0, 0, 25, 80, "Pin_1", "1", "square");
 
 	for (i = 1; i < n; i++) {
@@ -126,6 +126,6 @@ int main(int argc, char *argv[])
 	}
 
 	do_gen_dip(n/2, size);
-	
+
 	return 0;
 }

@@ -24,9 +24,9 @@
 #include <string.h>
 #include "fpg_common.h"
 
-/*      
+/*
  * TP160A tesla potentiometer, should also work for TP160P (plastic body)
- * 
+ *
  *
  *
  * >  16 mm  <   > 10.5 <
@@ -52,14 +52,14 @@ void do_gen_TP160A(void)
 	const char *desc = "Tesla potentiometr TP160A";
 
 	fpg_element_begin(desc);
-	
+
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(    0, 0, 1400, 3000, "Pin_1", "1", "");
 	fpg_pin_simple( 5000, 0, 1400, 3000, "Pin_2", "2", "");
 	fpg_pin_simple(10000, 0, 1400, 3000, "Pin_3", "3", "");
-	
+
 	fpg_add_origin(-3000, -8800);
 	fpg_rectangle_origin(16000, 10500);
 
@@ -69,12 +69,12 @@ void do_gen_TP160A(void)
 }
 
 const char *pot_type[] = {
-	"TP160A", 
+	"TP160A",
 	NULL
-}; 
+};
 
 const char *pot_desc[] = {
-	"Tesla potentiometr TP160A", 
+	"Tesla potentiometr TP160A",
 };
 
 void (*pot_gen[])(void) = {
@@ -101,7 +101,7 @@ int main(int argc, char *argv[])
 
 	if (type == -1) {
 		fprintf(stderr, "Invalid pot type.\n");
-		fpg_utils_print_help(pot_type, pot_desc);	
+		fpg_utils_print_help(pot_type, pot_desc);
 		return -1;
 	}
 

@@ -39,9 +39,9 @@
  *  ===========
  *     |   |
  *     |   |
- *       
+ *
  *     |Pmm|
- *  
+ *
  */
 void gen_large_cap(uint32_t D, uint32_t P)
 {
@@ -54,7 +54,7 @@ void gen_large_cap(uint32_t D, uint32_t P)
 
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_big(0, 0, "Pin_1", "1", "square");
 	fpg_pin_big(1000*P, 0, "Pin_2", "2", "");
 
@@ -80,11 +80,11 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Takes two arguments numbers D nad P.\n");
 		return 1;
 	}
-	
+
 	D = atoi(argv[1]);
 	P = atoi(argv[2]);
 
 	gen_large_cap(D, P);
-	
+
 	return 0;
 }

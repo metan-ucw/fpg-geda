@@ -47,7 +47,7 @@ void fpg_coil(int32_t x1, int32_t y1, int32_t x2, int32_t y2, uint8_t coils)
 		fpg_arc_origin(r, alpha, 180); 
 		fpg_add_origin(vx/parts, vy/parts);
 	}
-	
+
 	fpg_add_origin(-vx/(2*parts), -vy/(2*parts));
 	fpg_line_origin(vx/parts, vy/parts);
 

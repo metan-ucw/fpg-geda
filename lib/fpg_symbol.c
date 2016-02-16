@@ -34,12 +34,12 @@ void fpg_arrow(int32_t x1, int32_t y1, int32_t x2, int32_t y2)
 
 	/* save origin */
 	fpg_get_origin_back(&ox, &oy);
-	
+
 	fpg_line(x1, y1, x2, y2);
 	fpg_add_origin(x2, y2);
 	fpg_line_origin((vy-vx)/8, (-vy-vx)/8);
 	fpg_line_origin((-vx-vy)/8, (vx-vy)/8);
-	
+
 	/* recall origin */
 	fpg_set_origin_back(ox, oy);
 }
@@ -74,7 +74,7 @@ static void koch_render(int32_t x1, int32_t y1, int32_t x2, int32_t y2, uint8_t 
 		fpg_line(x1, y1, x2, y2);
 		return;
 	}
-	
+
 	x = (x1+x2)/2 + sqrt(3)*(y2-y1)/6;
 	y = (y1+y2)/2 - sqrt(3)*(x2-x1)/6;
 

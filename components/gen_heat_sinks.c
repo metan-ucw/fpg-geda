@@ -28,7 +28,7 @@
  * Generates TO220 heat sink footprint.
  *
  * (V7142A or V7142B)
- * 
+ *
  * | - - 24mm - - -|
  *                   - - - - - -
  * ||< - 22mm - ->||   |       |
@@ -38,7 +38,7 @@
  * || || | O | || ||   |
  * || || |/ \| || ||   7.8mm   |
  * || || || || || || - - - - - -
- *  
+ *
  *     | |
  * ||   3.4mm
  *  1mm
@@ -48,7 +48,7 @@
  * ||      _      ||
  * ||     ( )     ||         |
  * ||             ||
- * ||             ||         V7142A   25mm 
+ * ||             ||         V7142A   25mm
  * ||             ||         V7142B,C 40mm
  * ||             ||         |
  * ||             ||
@@ -106,7 +106,7 @@ static void gen_V7141X(void)
 	fpg_hline_origin_add(-3400);
 	fpg_vline_origin_add(7800);
 	fpg_hline_origin_add(-1000);
-	fpg_vline_origin_add(-3000);	
+	fpg_vline_origin_add(-3000);
 	fpg_line_origin_add(-1700, -2800);
 	fpg_hline_origin_add(-1000);
 	fpg_line_origin_add(-1700, 2800);
@@ -127,34 +127,34 @@ static void gen_V7141X(void)
 
 /*
  * CHL142/25-BLK
- * 
+ *
  * SOT93/TO220
- *             
+ *
  *             | - -17mm - - |
  *                                         _
  *  \\   \\   ||             ||   //   //  |
  *    \\  \\  ||    1.5mm    ||  //  //
  *  \\  \\ \\ ||   /         || // //  //  |
- *    \\  \ \\||  |          ||//  / //    
+ *    \\  \ \\||  |          ||//  / //
  *      \  /   | \|/         |   \  /      |
  *       >O      ==|==========    O<       25mm
  *      /  \   | /|\         |   /  \      |
- *    // /  //||             ||\\  \ \\    
+ *    // /  //||             ||\\  \ \\
  *  //  // // ||             || \\ \\  \\  |
  *    //  //  ||             ||  \\  \\
  *  //   //   ||             ||   \\   \\  _
  *
  * | - - - - - - - 41.5mm  - - - - - - - |
- * 
- *     
+ *
+ *
  *         1mm
  *        >---<
  *
- *            |5mm |  |4mm | 
+ *            |5mm |  |4mm |
  *   -      -       __      __
  *   |     | |     / /     / /
- *         | |    / /    / /  
- * 7.5mm   | |   / /   / /    
+ *         | |    / /    / /
+ * 7.5mm   | |   / /   / /
  *   |     | |  /  \ / /    /|
  *   _     |  \/     /    / /
  *   |     |       /    / /
@@ -162,15 +162,14 @@ static void gen_V7141X(void)
  *   |     |      __   /
  *   - /---      /  --
  *     \         \__--
- *     /---     
- *         |      
+ *     /---
+ *         |
  *
  */
 static void gen_V7477X(void)
 {
 
 	fpg_element_begin("SOT93/TO220 heat sink with one soldering pin");
-	
 
 	fpg_element_end();
 }

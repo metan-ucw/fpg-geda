@@ -27,8 +27,8 @@
 static void test_coil(void)
 {
 	fpg_coil(0, 0, 0, 1000, 3);
-	fpg_coil(0, 0, 1000, 0, 7); 
-	fpg_coil(0, 0, 1000, 1000, 5); 
+	fpg_coil(0, 0, 1000, 0, 7);
+	fpg_coil(0, 0, 1000, 1000, 5);
 	fpg_coil(0, 0, 1000, 500, 2);
 }
 

@@ -29,7 +29,7 @@
  * (PSHXX-WG in http://www.gme.cz)
  *
  *            1.4mm
- *            || 
+ *            ||
  *     _ _ _    _ _ _ _ _
  *   |     \\ ()         |
  *   |     // ||         |
@@ -60,22 +60,21 @@ void do_gen_conn(uint8_t n)
 
 	snprintf(buf, 256, "Connector 3.96 90st %i", n);
 
-	//fpg_element_begin("", buf, "", "", 10000, 10000, 2500, 1000);
 	fpg_element_begin(buf);
 
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	/* draw rectangle around whole connector */
 	fpg_rectangle_origin(n*3960, 17500);
-	
+
 	fpg_hline(0, 9700, n*3960);
 	fpg_hline(0, 12000, n*3960);
-	
+
 	fpg_set_origin(1980, 15900);
 
 	fpg_pin_big(0, 0, "Pin_1", "1", "square");
-	
+
 	for (i = 1; i < n; i++) {
 		char name[128], pin[16];
 
@@ -98,10 +97,10 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Takes exactly one argument; number of pins.\n");
 		return 1;
 	}
-	
+
 	n = atoi(argv[1]);
 
 	do_gen_conn(n);
-	
+
 	return 0;
 }

@@ -44,7 +44,7 @@ void do_gen_cap(void)
 	fpg_element_begin(desc);
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(0,    0, 600, 2000, "Pin_1", "1", "");
 	fpg_pin_simple(5000, 0, 600, 2000, "Pin_2", "2", "");
 	fpg_cap(0, 0, 5000, 0, FPG_CAP_GEN);
@@ -55,10 +55,9 @@ void do_gen_cap(void)
 
 int main(void)
 {
-
 	fpg_set_file(stdout);
-	
+
 	do_gen_cap();
-	
+
 	return 0;
 }

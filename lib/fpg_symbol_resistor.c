@@ -33,10 +33,10 @@ void fpg_resistor(int32_t x1, int32_t y1, int32_t x2, int32_t y2, uint8_t type)
 
 	/* save origin */
 	fpg_get_origin_back(&ox, &oy);
-	
+
 	fpg_add_origin(x1, y1);
 	fpg_line_origin_add(vx/5, vy/5);
-	
+
 	if (type == FPG_RESISTOR_EU) {
 		fpg_add_origin(-vy/10, vx/10);
 		fpg_parallelogram_origin(vy/5, -vx/5, 3*vx/5, 3*vy/5);
@@ -50,9 +50,9 @@ void fpg_resistor(int32_t x1, int32_t y1, int32_t x2, int32_t y2, uint8_t type)
 		fpg_line_origin_add(vy/5   + vx/10, -vx/5  + vy/10);
 		fpg_line_origin_add(-vy/10 + vx/20,  vx/10 + vy/20);
 	}
-	
+
 	fpg_line_origin_add(vx/5, vy/5);
-	
+
 	/* recall origin */
 	fpg_set_origin_back(ox, oy);
 }

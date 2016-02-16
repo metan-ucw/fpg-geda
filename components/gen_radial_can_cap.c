@@ -39,9 +39,9 @@
  *  ===========
  *     |   |
  *     |   |
- *       
+ *
  *     |Pum|
- *  
+ *
  */
 void do_gen_large_cap(uint32_t D, uint32_t P)
 {
@@ -51,7 +51,7 @@ void do_gen_large_cap(uint32_t D, uint32_t P)
 
 //	fpg_element_begin("", buf, "", "", 1000000, 1000000, 2500, 1000);
 	fpg_element_begin(buf);
-	
+
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
 
@@ -71,7 +71,6 @@ void do_gen_large_cap(uint32_t D, uint32_t P)
 	/* draw circle around */
 	fpg_circle_origin(D/2);
 
-	
 	FPG_METADATA_DEFAULT("Cyril Hrubis", buf);
 	fpg_element_end();
 }
@@ -86,11 +85,11 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Takes two arguments numbers D nad P.\n");
 		return 1;
 	}
-	
+
 	D = atoi(argv[1]);
 	P = atoi(argv[2]);
 
 	do_gen_large_cap(D, P);
-	
+
 	return 0;
 }

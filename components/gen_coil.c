@@ -32,7 +32,7 @@
  *  [ ]   \/ | \/    |
  * .---.    -|-  - - -
  * |   |     |
- * |-b-|     
+ * |-b-|
  *
  * Footprint:
  *
@@ -52,12 +52,12 @@ void do_gen_coil(int32_t a, int32_t b)
 	fpg_element_begin(buf);
 	fpg_set_line_thickness(1000);
 	fpg_set_units(fpg_um);
-	
+
 	fpg_pin_simple(0,      0, 700, 2000, "Pin_1", "1", "");
 	fpg_pin_simple(0, 1000*b, 700, 2000, "Pin_2", "2", "");
 
 	fpg_coil(0, 0, 0, 1000*b, 3); 
-	
+
 	fpg_set_origin((-1000*(a+1))/2, -1000);
 	fpg_rectangle_origin(1000*(a+2), 1000*(b+2));
 
@@ -75,11 +75,11 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Takes two arguments numbers a nad b.\n");
 		return 1;
 	}
-	
+
 	a = atoi(argv[1]);
 	b = atoi(argv[2]);
 
 	do_gen_coil(a, b);
-	
+
 	return 0;
 }

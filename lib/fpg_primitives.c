@@ -182,7 +182,7 @@ void fpg_set_angle(int16_t angle)
 void fpg_add_angle(int16_t angle)
 {
 	s_angle += angle;
-	
+
 	if (s_angle < 0)
 		s_angle += 360;
 
@@ -342,10 +342,10 @@ void fpg_parallelogram(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t x
 
 	line(mx1, my1, mx2, my2);
 	line(mx1, my1, mx3, my3);
-	
+
 	mx1 *= -1;
 	my1 *= -1;
-	
+
 	mx1 += mx2 + mx3;
 	my1 += my2 + my3;
 
@@ -369,7 +369,7 @@ void fpg_tetragon(int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t x3, in
 	int32_t my3 = origin_y + c_int32(y3);
 	int32_t mx4 = origin_x + c_int32(x4);
 	int32_t my4 = origin_y + c_int32(y4);
-	
+
 	line(mx1, my1, mx2, my2);
 	line(mx2, my2, mx3, my3);
 	line(mx3, my3, mx4, my4);
