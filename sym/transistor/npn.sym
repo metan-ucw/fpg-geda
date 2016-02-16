@@ -46,3 +46,5 @@ pinseq=2
 }
 T 195 795 8 10 1 1 0 0 1
 refdes=Q?
+T 95 95 8 10 0 1 0 0 1
+device=TRANSISTOR_NPN

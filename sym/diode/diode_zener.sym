@@ -31,4 +31,4 @@ pinseq=2
 T 195 395 8 10 1 1 0 0 1
 refdes=D?
 T 195 395 8 10 0 1 0 0 1
-device=DIODE
+device=DIODE_ZENER
