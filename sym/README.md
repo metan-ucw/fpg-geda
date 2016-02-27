@@ -82,7 +82,8 @@ diode
 
 ![bridge](diode/bridge.png?raw=true "bridge")
 ![diode](diode/diode.png?raw=true "diode")
-![diode_led](diode/diode_led.png?raw=true "diode_led")
+![diode_led-1](diode/diode_led-1.png?raw=true "diode_led-1")
+![diode_led-2](diode/diode_led-2.png?raw=true "diode_led-2")
 ![diode_schottky](diode/diode_schottky.png?raw=true "diode_schottky")
 ![diode_zener](diode/diode_zener.png?raw=true "diode_zener")
 
