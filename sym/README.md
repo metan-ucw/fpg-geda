@@ -130,6 +130,12 @@ relay
 ![relay_spdt](relay/relay_spdt.png?raw=true "relay_spdt")
 ![relay_spst](relay/relay_spst.png?raw=true "relay_spst")
 
+switch
+------
+
+![switch-spdt-1](switch/switch-spdt-1.png?raw=true "switch-spdt-1")
+![switch-spst-1](switch/switch-spst-1.png?raw=true "switch-spst-1")
+
 transistor
 ----------
 
