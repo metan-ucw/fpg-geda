@@ -4,6 +4,11 @@ Symbols
 basic
 -----
 
+![antenna](basic/antenna.png?raw=true "antenna")
+![battery-1](basic/battery-1.png?raw=true "battery-1")
+![battery-2](basic/battery-2.png?raw=true "battery-2")
+![battery-3](basic/battery-3.png?raw=true "battery-3")
+![bell-1](basic/bell-1.png?raw=true "bell-1")
 ![capacitor](basic/capacitor.png?raw=true "capacitor")
 ![capacitor_polarized](basic/capacitor_polarized.png?raw=true "capacitor_polarized")
 ![coil](basic/coil.png?raw=true "coil")
