@@ -17,13 +17,40 @@ sub line_size
 sub cap_style
 {
 	my (%ctx) = @_;
-	my %cap_hash = ('square' => 1, 'round' => 2);
+	my %cap = ('square' => 1, 'round' => 2);
 
 	if ($ctx{'cap_style'}) {
-		return $cap_hash{$ctx{'cap_style'}};
+		return $cap{$ctx{'cap_style'}};
 	}
 
 	return 0;
+}
+
+sub dash_style
+{
+	my (%ctx) = @_;
+	my %dash = ('dotted' => 1, 'dashed' => 2,
+	            'center' => 3, 'phantom' => 4);
+
+	if ($ctx{'dash_style'}) {
+		return $dash{$ctx{'dash_style'}};
+	}
+
+	return 0;
+}
+
+sub dash_length
+{
+	my (%ctx) = @_;
+
+	return $ctx{'dash_length'} || -1;
+}
+
+sub dash_space
+{
+	my (%ctx) = @_;
+
+	return $ctx{'dash_space'} || -1;
 }
 
 sub fill
@@ -99,8 +126,10 @@ sub line
 
 	println("L $x1 $y1 $x2 $y2 3 "
 		. line_size(%ctx) . " "
-		. cap_style(%ctx) .
-		" 0 -1 -1");
+		. cap_style(%ctx) . " "
+		. dash_style(%ctx) . " "
+		. dash_length(%ctx) . " "
+		. dash_space(%ctx));
 }
 
 sub text
