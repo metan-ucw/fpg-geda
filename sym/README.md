@@ -85,6 +85,17 @@ connector
 diode
 -----
 
+![7segment-1-ca-1](diode/7segment-1-ca-1.png?raw=true "7segment-1-ca-1")
+![7segment-1-cc-1](diode/7segment-1-cc-1.png?raw=true "7segment-1-cc-1")
+![7segment-1-lq3x0](diode/7segment-1-lq3x0.png?raw=true "7segment-1-lq3x0")
+![7segment-8-ca-1](diode/7segment-8-ca-1.png?raw=true "7segment-8-ca-1")
+![7segment-8-ca-2](diode/7segment-8-ca-2.png?raw=true "7segment-8-ca-2")
+![7segment-8-ca-3](diode/7segment-8-ca-3.png?raw=true "7segment-8-ca-3")
+![7segment-8-ca-4](diode/7segment-8-ca-4.png?raw=true "7segment-8-ca-4")
+![7segment-8-cc-1](diode/7segment-8-cc-1.png?raw=true "7segment-8-cc-1")
+![7segment-8-cc-2](diode/7segment-8-cc-2.png?raw=true "7segment-8-cc-2")
+![7segment-8-cc-3](diode/7segment-8-cc-3.png?raw=true "7segment-8-cc-3")
+![7segment-8-lq4x0](diode/7segment-8-lq4x0.png?raw=true "7segment-8-lq4x0")
 ![bridge](diode/bridge.png?raw=true "bridge")
 ![diode](diode/diode.png?raw=true "diode")
 ![diode_led-1](diode/diode_led-1.png?raw=true "diode_led-1")

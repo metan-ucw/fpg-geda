@@ -21,7 +21,7 @@ sub check_ctx
 	my (%ctx) = @_;
 	my %keys = ("line_size" => 1, "cap_style" => 1, "dash_style" => 1,
 	            "dash_lenght" => 1, "dash_space" => 1, "color" => 1,
-		    "origin" => 1, "fill" => 1);
+		    "origin" => 1, "fill" => 1, "size" => 1);
 
 	for (keys %ctx) {
 		if (! $keys{$_}) {
@@ -121,9 +121,23 @@ sub text_color
 	return $ctx{'color'} || 8;
 }
 
+sub text_size
+{
+	my (%ctx) = @_;
+
+	return $ctx{'size'} || 10;
+}
+
 #
 # Public interface
 #
+
+sub round_to_grid
+{
+	my ($num, $mul) = @_;
+
+	return int(($num + $mul - 1)/$mul)*$mul;
+}
 
 sub circle
 {
@@ -199,8 +213,9 @@ sub text
 	check_int(($x, $y));
 
 	println("T $x $y "
-		. text_color(%ctx) .
-		" 10 $visible $name_value 0 "
+		. text_color(%ctx) . " "
+		. text_size(%ctx) .
+		" $visible $name_value 0 "
 		. text_origin(%ctx) . " 1");
 	println("$text");
 }
