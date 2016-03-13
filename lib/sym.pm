@@ -20,7 +20,7 @@ sub check_ctx
 {
 	my (%ctx) = @_;
 	my %keys = ("line_size" => 1, "cap_style" => 1, "dash_style" => 1,
-	            "dash_lenght" => 1, "dash_space" => 1, "color" => 1,
+	            "dash_length" => 1, "dash_space" => 1, "color" => 1,
 		    "origin" => 1, "fill" => 1, "size" => 1);
 
 	for (keys %ctx) {
