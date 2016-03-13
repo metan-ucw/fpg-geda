@@ -42,8 +42,11 @@ sub check_int
 sub line_size
 {
 	my (%ctx) = @_;
+	my $size = $ctx{'line_size'};
 
-	return $ctx{'line_size'} || 10;
+	return $size if defined $size;
+
+	return 10;
 }
 
 sub cap_style
@@ -255,6 +258,44 @@ sub pin
 	pin_text($x1, $y1, "pinnumber=", @$pinnumber);
 	pin_text($x1, $y1, "pinseq=", @$pinseq);
 	println("}");
+}
+
+sub path
+{
+	my @output;
+
+	while (1) {
+		my $type = shift @_;
+
+		if ($type =~ /(z|Z)/) {
+			push(@output, "$type");
+			last;
+		}
+
+		if ($type =~ /(m|M|l|L)/) {
+			my $coords = shift @_;
+
+			for (my $i = 0; $i < @$coords; $i+=2) {
+				push(@output, "$type $coords->[$i],$coords->[$i+1]");
+			}
+		}
+	}
+
+	my (%ctx) = @_;
+	my $lines = @output;
+
+	println("H 3 "
+		. line_size(%ctx) . " "
+		. cap_style(%ctx) . " "
+		. dash_style(%ctx) . " "
+		. dash_length(%ctx) . " "
+		. dash_space(%ctx) . " "
+		. fill(%ctx) .
+		" -1 -1 -1 -1 -1 $lines");
+
+	for (@output) {
+		println($_);
+	}
 }
 
 sub header
