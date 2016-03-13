@@ -187,6 +187,12 @@ switch
 transistor
 ----------
 
-![npn](transistor/npn.png?raw=true "npn")
-![pnp](transistor/pnp.png?raw=true "pnp")
+![npn-1](transistor/npn-1.png?raw=true "npn-1")
+![n-jfet-1](transistor/n-jfet-1.png?raw=true "n-jfet-1")
+![n-mos-e-1](transistor/n-mos-e-1.png?raw=true "n-mos-e-1")
+![n-mos-e-diode-1](transistor/n-mos-e-diode-1.png?raw=true "n-mos-e-diode-1")
+![pnp-1](transistor/pnp-1.png?raw=true "pnp-1")
+![p-jfet-1](transistor/p-jfet-1.png?raw=true "p-jfet-1")
+![p-mos-e-1](transistor/p-mos-e-1.png?raw=true "p-mos-e-1")
+![p-mos-e-diode-1](transistor/p-mos-e-diode-1.png?raw=true "p-mos-e-diode-1")
 
