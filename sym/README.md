@@ -14,6 +14,8 @@ basic
 ![coil](basic/coil.png?raw=true "coil")
 ![fuse](basic/fuse.png?raw=true "fuse")
 ![light_bulb](basic/light_bulb.png?raw=true "light_bulb")
+![piezo_siren-1](basic/piezo_siren-1.png?raw=true "piezo_siren-1")
+![piezo_siren-2](basic/piezo_siren-2.png?raw=true "piezo_siren-2")
 ![potentiometer](basic/potentiometer.png?raw=true "potentiometer")
 ![resistor](basic/resistor.png?raw=true "resistor")
 ![trimmer_pot](basic/trimmer_pot.png?raw=true "trimmer_pot")
