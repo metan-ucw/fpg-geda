@@ -137,8 +137,20 @@ power
 
 ![gnd-1](power/gnd-1.png?raw=true "gnd-1")
 ![vcc-1](power/vcc-1.png?raw=true "vcc-1")
+![vcc-1.5V-1](power/vcc-1.5V-1.png?raw=true "vcc-1.5V-1")
+![vcc-3V-1](power/vcc-3V-1.png?raw=true "vcc-3V-1")
+![vcc-3.3V-1](power/vcc-3.3V-1.png?raw=true "vcc-3.3V-1")
+![vcc-4.5V-1](power/vcc-4.5V-1.png?raw=true "vcc-4.5V-1")
 ![vcc-5V-1](power/vcc-5V-1.png?raw=true "vcc-5V-1")
+![vcc-6V-1](power/vcc-6V-1.png?raw=true "vcc-6V-1")
+![vcc-7.5V-1](power/vcc-7.5V-1.png?raw=true "vcc-7.5V-1")
+![vcc-9V-1](power/vcc-9V-1.png?raw=true "vcc-9V-1")
 ![vcc-12V-1](power/vcc-12V-1.png?raw=true "vcc-12V-1")
+![vcc-24V-1](power/vcc-24V-1.png?raw=true "vcc-24V-1")
+![vcc--5V-1](power/vcc--5V-1.png?raw=true "vcc--5V-1")
+![vcc--9V-1](power/vcc--9V-1.png?raw=true "vcc--9V-1")
+![vcc--12V-1](power/vcc--12V-1.png?raw=true "vcc--12V-1")
+![vcc--24V-1](power/vcc--24V-1.png?raw=true "vcc--24V-1")
 
 relay
 -----
