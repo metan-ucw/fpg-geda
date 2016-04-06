@@ -28,44 +28,69 @@ sub width
 	return 1000;
 }
 
-sub mm_to_100mils
-{
-	my ($v) = @_;
+# Default units are mils
+my $unit_mul = 100;
 
-	return round(100 * $v * 39.3700787);
+# Origin added to everything in pcb units i.e. mils * 100
+my $x_origin = 0;
+my $y_origin = 0;
+
+sub set_unit
+{
+	my ($unit) = @_;
+
+	if ($unit eq "pcb") {
+		$unit_mul = 1;
+	} elsif ($unit eq "mil") {
+		$unit_mul = 100;
+	} elsif ($unit eq "mm") {
+		$unit_mul = 3937.00787;
+	} elsif ($unit eq "um") {
+		$unit_mul = 3.93700787;
+	} else {
+		w("Invalid unit $unit");
+	}
+}
+
+sub set_origin
+{
+	my ($x, $y) = @_;
+
+	$x_origin = $unit_mul * $x;
+	$y_origin = $unit_mul * $y;
 }
 
 sub xcoord
 {
 	my ($c) = @_;
 
-	return round(100 * $c);
+	return round($unit_mul * $c + $x_origin);
 }
 
 sub ycoord
 {
 	my ($c) = @_;
 
-	return round(100 * $c);
+	return round($unit_mul * $c + $y_origin);
 }
 
 sub size
 {
 	my ($s) = @_;
 
-	return abs(round(100 * $s));
+	return abs(round($unit_mul * $s));
 }
 
-sub attr
+sub attribute
 {
 	my ($name, $value) = @_;
 
-	println("\tAttribute($name $value)");
+	println("\tAttribute(\"$name\" \"$value\")");
 }
 
 sub pin
 {
-	my ($x, $y, $drill, $copper, $name, $nr, $type) = @_;
+	my ($x, $y, $copper, $clearance, $mask, $drill, $name, $nr, $type) = @_;
 
 	$type = $type || "";
 
@@ -73,10 +98,17 @@ sub pin
 	        xcoord($x) . " " .
 	        ycoord($y) . " " .
 		size($copper) . " " .
-		size(1.1 * $copper) . " " .
-		size($copper) . " " .
+		size($clearance) . " " .
+		size($mask) . " " .
 		size($drill) .
 	        " \"$name\" \"$nr\" \"$type\"]");
+}
+
+sub pin_s
+{
+	my ($x, $y, $drill, $copper, $name, $nr, $type) = @_;
+
+	pin($x, $y, $copper, 1.1 * $copper, $copper, $drill, $name, $nr, $type);
 }
 
 sub line
@@ -87,8 +119,22 @@ sub line
 		xcoord($x1) . " " .
 		ycoord($y1) . " " .
 		xcoord($x2) . " " .
-		ycoord($y2) . " " .
+		ycoord($y2) .
 		" $w]");
+}
+
+sub hline
+{
+	my ($x1, $x2, $y, $w) = @_;
+
+	line($x1, $y, $x2, $y, $w);
+}
+
+sub vline
+{
+	my ($x, $y1, $y2, $w) = @_;
+
+	line($x, $y1, $x, $y2, $w);
 }
 
 sub arc
@@ -129,17 +175,38 @@ sub shape
 	}
 }
 
+sub rect
+{
+	my ($x, $y, $w, $h) = @_;
+	my $lw = width();
+
+	hline($x, $x+$w, $y, $lw);
+	vline($x, $y, $y+$h, $lw);
+	vline($x+$w, $y, $y+$h, $lw);
+	hline($x, $x+$w, $y+$h, $lw);
+}
+
 sub begin
 {
 	my ($desc) = @_;
 
 	println("Element[\"\" \"$desc\" \"\" \"\" 100000 100000 1000 1000 0 100 \"\"]");
 	println("(");
+	attribute("description", $desc);
 }
 
 sub end
 {
+	my ($author) = @_;
+
+	attribute("dist-license", "GPLv2");
+	attribute("use-license", "Unlimited");
+	attribute("author", "$author; Created by fpg-geda.");
+	attribute("copyright", $author);
 	println(")");
+
+	set_origin(0, 0);
+	set_unit("mil");
 }
 
 1;
