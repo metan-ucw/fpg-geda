@@ -60,6 +60,14 @@ sub set_origin
 	$y_origin = $unit_mul * $y;
 }
 
+sub add_origin
+{
+	my ($x, $y) = @_;
+
+	$x_origin += $unit_mul * $x;
+	$y_origin += $unit_mul * $y;
+}
+
 sub xcoord
 {
 	my ($c) = @_;
@@ -115,6 +123,8 @@ sub line
 {
 	my ($x1, $y1, $x2, $y2, $w) = @_;
 
+	$w = $w || width();
+
 	println("\tElementLine[" .
 		xcoord($x1) . " " .
 		ycoord($y1) . " " .
@@ -147,6 +157,14 @@ sub arc
 		size($w) . " " .
 		size($h) .
 		" $start_angle $delta_angle $s]");
+}
+
+sub circle
+{
+	my ($x, $y, $r) = @_;
+	my $w = width();
+
+	arc($x, $y, $r, $r, 0, 360, $w);
 }
 
 sub shape
@@ -184,6 +202,64 @@ sub rect
 	vline($x, $y, $y+$h, $lw);
 	vline($x+$w, $y, $y+$h, $lw);
 	hline($x, $x+$w, $y+$h, $lw);
+}
+
+sub lineto
+{
+	my ($x, $y) = @_;
+
+	line(0, 0, $x, $y);
+	add_origin($x, $y);
+}
+
+sub resistor
+{
+	my ($x1, $y1, $x2, $y2) = @_;
+	my $vx = $x2 - $x1;
+	my $vy = $y2 - $y1;
+
+	my @origin = ($x_origin, $y_origin);
+
+	lineto($vx/5, $vy/5);
+	add_origin(-$vy/10, $vx/10);
+
+	my $x3 =  $vy/5;
+	my $y3 = -$vx/5;
+	my $x4 = 3*$vx/5;
+	my $y4 = 3*$vy/5;
+
+	line(0, 0, $x3, $y3);
+	line(0, 0, $x4, $y4);
+
+	my $x5 = $x3 + $x4;
+	my $y5 = $y3 + $y4;;
+
+	line($x3, $y3, $x5, $y5);
+	line($x4, $y4, $x5, $y5);
+
+	add_origin($x4 + $vy/10, $y4 - $vx/10);
+
+	lineto($vx/5, $vy/5);
+
+	($x_origin, $y_origin) = @origin;
+}
+
+sub diode
+{
+	my ($x1, $y1, $x2, $y2) = @_;
+	my @origin = ($x_origin, $y_origin);
+
+	add_origin($x1, $y1);
+
+	lineto($x2/3, $y2/3);
+	line(-$y2/6, $x2/6, $y2/6, -$x2/6);
+	line(-$y2/6, $x2/6, $x2/3, $y2/3);
+	line($y2/6, -$x2/6, $x2/3, $y2/3);
+	add_origin($x2/3, $y2/3);
+	line(-$y2/6, $x2/6, $y2/6, -$x2/6);
+	lineto($x2/3, $y2/3);
+
+	($x_origin, $y_origin) = @origin;
 }
 
 sub begin
