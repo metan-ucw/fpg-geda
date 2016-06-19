@@ -7,6 +7,7 @@ all:
 	@./gen_coil.pl
 	@./gen_conn.pl
 	@./gen_heatsink.pl
+	@./gen_pot.pl
 	@./test.pl > test.fp
 
 clean:
