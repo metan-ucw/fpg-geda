@@ -160,9 +160,75 @@ sub DO201_stay
 	close($fp);
 }
 
+#
+# Generates wob package used for bridge recfilters.
+#
+#
+#          |- - 9.3 mm - -|
+#
+#          +--------------+  -
+#          |              |  |
+#          |              |  5.6 mm
+#          |              |
+#          |              |  |
+#          +--------------+  -
+#            |  |    |  |
+#            |  |    |  |
+#            |  |    |  |
+#            |  |    |  |
+#            |  |    |  |
+#            |  |    |  |
+#            |  |    |  |
+#            |  |    |  |
+#            |  |    |  |
+#            |
+#            |
+#
+#                    /
+#
+#                  /      4.6 - 5.6 mm
+#              ---------
+#            /    (~)    \      /
+#          /               \
+#         |                 | /
+#        |                   |
+#        | (+)           (-) |
+#        |                   |
+#         |                 |
+#          \               /
+#            \    (~)    /
+#              ---------
+#
+sub WOB
+{
+	print("Generating wob_bridge.fp...\n");
+	open(my $fp, ">wob_bridge.fp") or die $!;
+	select $fp;
+
+	fp::begin("WOB Bridge rectifier");
+	fp::set_unit("um");
+
+	fp::circle(0, 0, 4600);
+
+	fp::diode(0, -3600, -3600, 0);
+	fp::diode(0, 3600, -3600, 0);
+	fp::diode(3600, 0, 0, -3600);
+	fp::diode(3600, 0, 0, 3600);
+
+	fp::pin_s(-3600, 0, 810, 2000, "+", "1", "square");
+	fp::pin_s(0, 3600, 810, 2000, "~", "2", "");
+	fp::pin_s(3600, 0, 810, 2000, "-", "3", "");
+	fp::pin_s(0, -3600, 810, 2000, "~", "4", "");
+
+	fp::end("Cyril Hrubis");
+	select STDOUT;
+	close($fp);
+}
+
 DO35();
 DO35_stay();
 DO41();
 DO41_stay();
 DO201();
 DO201_stay();
+WOB();
