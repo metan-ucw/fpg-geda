@@ -28,7 +28,7 @@ sub DO35
 
 	fp::pin_s(0, 0, 500, 1600, "Pin_1", "1", "square");
 	fp::pin_s(5000, 0, 500, 1600, "Pin_2", "2", "");
-	fp::diode(5000, 0, -5000, 0);
+	fp::diode(5000, 0, 0, 0);
 
 	fp::end("Cyril Hrubis");
 	select STDOUT;
@@ -79,7 +79,7 @@ sub DO41
 
 	fp::pin_s(0, 0, 800, 2500, "Pin_1", "1", "square");
 	fp::pin_s(10000, 0, 800, 2500, "Pin_2", "2", "");
-	fp::diode(10000, 0, -10000, 0);
+	fp::diode(10000, 0, 0, 0);
 
 	fp::end("Cyril Hrubis");
 	select STDOUT;
@@ -131,7 +131,7 @@ sub DO201
 
 	fp::pin_s(0, 0, 800, 2500, "Pin_1", "1", "square");
 	fp::pin_s(10000, 0, 800, 2500, "Pin_2", "2", "");
-	fp::diode(10000, 0, -10000, 0);
+	fp::diode(10000, 0, 0, 0);
 
 	fp::end("Cyril Hrubis");
 	select STDOUT;
