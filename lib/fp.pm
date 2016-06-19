@@ -217,7 +217,15 @@ sub shape
 
 sub rect
 {
-	my ($x, $y, $w, $h) = @_;
+	my $x = 0;
+	my $y = 0;
+
+	if (@_ == 4 || @_ == 5) {
+		$x = shift;
+		$y = shift;
+	}
+
+	my ($w, $h) = @_;
 	my $lw = width();
 
 	hline($x, $x+$w, $y, $lw);

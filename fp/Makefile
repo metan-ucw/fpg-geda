@@ -5,6 +5,7 @@ all:
 	@./gen_diode.pl
 	@./gen_capacitor.pl
 	@./gen_coil.pl
+	@./gen_conn.pl
 	@./test.pl > test.fp
 
 clean:
