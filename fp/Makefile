@@ -6,6 +6,7 @@ all:
 	@./gen_capacitor.pl
 	@./gen_coil.pl
 	@./gen_conn.pl
+	@./gen_heatsink.pl
 	@./test.pl > test.fp
 
 clean:

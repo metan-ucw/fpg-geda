@@ -141,16 +141,52 @@ sub line
 
 sub hline
 {
-	my ($x1, $x2, $y, $w) = @_;
+	my $x1 = 0;
+	my $x2;
+	my $y = 0;
+
+	if (@_ == 3 or @_ == 4) {
+		$x1 = shift;
+		$x2 = shift;
+		$y = shift;
+	} else {
+		$x2 = shift;
+	}
+
+	my ($w) = @_;
 
 	line($x1, $y, $x2, $y, $w);
 }
 
 sub vline
 {
-	my ($x, $y1, $y2, $w) = @_;
+	my $x = 0;
+	my $y1 = 0;
+
+	if (@_ == 3 or @_ == 4) {
+		$x = shift;
+		$y1 = shift;
+	}
+
+	my ($y2, $w) = @_;
 
 	line($x, $y1, $x, $y2, $w);
+}
+
+sub vlineto
+{
+	my ($h) = @_;
+
+	vline($h);
+	add_origin(0, $h);
+}
+
+sub hlineto
+{
+	my ($w) = @_;
+
+	hline($w);
+	add_origin($w, 0);
 }
 
 sub arc
