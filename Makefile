@@ -1,9 +1,7 @@
 all:
-	@cd lib && $(MAKE)
-	@cd components && $(MAKE)
-	@cd scripts && $(MAKE)
+	$(MAKE) -C fp all
+	$(MAKE) -C sym all
 
 clean:
-	@cd lib && $(MAKE) clean
-	@cd components && $(MAKE) clean
-	@rm -rf footprints
+	$(MAKE) -C fp clean
+	#$(MAKE) -C sym clean
