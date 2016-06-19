@@ -18,7 +18,7 @@ pintype=pas
 T 600 900 5 10 0 0 0 0 1
 pinlabel=C
 T 600 900 5 10 0 0 0 0 1
-pinnumber=C
+pinnumber=1
 T 600 900 5 10 0 0 0 0 1
 pinseq=1
 }
@@ -29,7 +29,7 @@ pintype=pas
 T 100 500 5 10 0 0 0 0 1
 pinlabel=B
 T 100 500 5 10 0 0 0 0 1
-pinnumber=B
+pinnumber=2
 T 100 500 5 10 0 0 0 0 1
 pinseq=2
 }
@@ -40,7 +40,7 @@ pintype=pas
 T 600 100 5 10 0 0 0 0 1
 pinlabel=E
 T 600 100 5 10 0 0 0 0 1
-pinnumber=E
+pinnumber=3
 T 600 100 5 10 0 0 0 0 1
 pinseq=3
 }
