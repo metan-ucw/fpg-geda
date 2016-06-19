@@ -8,6 +8,7 @@ all:
 	@./gen_conn.pl
 	@./gen_heatsink.pl
 	@./gen_pot.pl
+	@./gen_led.pl
 	@./test.pl > test.fp
 
 clean:

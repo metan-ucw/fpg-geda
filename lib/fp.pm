@@ -134,7 +134,15 @@ sub pin_s
 
 sub line
 {
-	my ($x1, $y1, $x2, $y2, $w) = @_;
+	my $x1 = 0;
+	my $y1 = 0;
+
+	if (@_ == 4 or @_ == 5) {
+		$x1 = shift;
+		$y1 = shift;
+	}
+
+	my ($x2, $y2, $w) = @_;
 
 	$w = $w || width();
 
@@ -210,7 +218,7 @@ sub arc
 		$h = shift;
 	} else {
 		$w = shift;
-		$h = $w;
+		$h = shift;
 	}
 
 	my ($start_angle, $delta_angle, $s) = @_;
@@ -227,9 +235,17 @@ sub arc
 
 sub circle
 {
-	my ($x, $y, $r) = @_;
+	my $x = 0;
+	my $y = 0;
 
-	arc($x, $y, $r, $r, 0, 360);
+	if (@_ == 3 or @_ == 4) {
+		$x = shift;
+		$y = shift;
+	}
+
+	my ($r, $s) = @_;
+
+	arc($x, $y, $r, $r, 0, 360, $s);
 }
 
 sub shape
@@ -349,7 +365,7 @@ sub resistor
 
 sub diode
 {
-	my ($x1, $y1, $x2, $y2) = @_;
+	my ($x1, $y1, $x2, $y2, $type) = @_;
 	my @origin = ($x_origin, $y_origin);
 
 	add_origin($x1, $y1);
@@ -364,6 +380,15 @@ sub diode
 	add_origin($x2/3, $y2/3);
 	line(-$y2/6, $x2/6, $y2/6, -$x2/6);
 	lineto($x2/3, $y2/3);
+
+	if ($type and $type eq "led") {
+		($x_origin, $y_origin) = @origin;
+		add_origin($x1, $y1);
+		add_origin($x2/2 + $y2/6, $y2/2 - $x2/6);
+		line($x2/10 + $y2/10, $y2/10 - $x2/10);
+		add_origin($x2/16, $y2/16);
+		line($x2/10 + $y2/10, $y2/10 - $x2/10);
+	}
 
 	($x_origin, $y_origin) = @origin;
 }
@@ -429,7 +454,7 @@ sub coil
 	add_origin($dx/2, $dy/2);
 
 	for (my $i = 0; $i < $turns; $i++) {
-		arc($r, $alpha, 180);
+		arc($r, $r, $alpha, 180);
 		add_origin($dx, $dy);
 	}
 
