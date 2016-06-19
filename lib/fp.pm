@@ -396,6 +396,13 @@ sub coil
 	($x_origin, $y_origin) = @origin;
 }
 
+sub dot
+{
+	my ($x, $y) = @_;
+
+	circle($x, $y, width()/(2*$unit_mul));
+}
+
 sub begin
 {
 	my ($desc) = @_;

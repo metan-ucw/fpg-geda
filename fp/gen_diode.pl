@@ -225,6 +225,65 @@ sub WOB
 	close($fp);
 }
 
+#
+# DB package bridge rectifier (DIL compatible)
+#
+#
+#    [ ]       [ ] `  `  `  `  `
+#   ---------------  - -
+#  || ~         ~  |   |       |
+#  ||              |
+#  ||              |   6.4mm   7.9mm
+#  ||              |
+#  || +         -  |   |       |
+#  `---------------` - -
+#    [ ]       [ ]
+#  `  `         `  `  `  `  `  `
+#     `  5.1mm  `
+#  `     8.5mm     `
+#
+sub DB
+{
+	print("Generating db_bridge.fp...\n");
+	open(my $fp, ">db_bridge.fp") or die $!;
+	select $fp;
+
+	fp::begin("WOB Bridge rectifier");
+	fp::set_unit("um");
+
+	fp::rect(-4300, -4000, 8600, 8000);
+	fp::vline(-3900, -4000, 4000);
+
+	fp::pin_s(-2550, 3950, 600, 1200, "+", "1", "square");
+	fp::pin_s(2550, -3950, 600, 1200, "~", "2");
+	fp::pin_s(2550, 3950, 600, 1200, "-", "3");
+	fp::pin_s(-2550, -3950, 600, 1200, "~", "4");
+
+	my $dw = 2000;
+
+	fp::diode(-2550, -$dw, -2550, $dw);
+	fp::diode(-850, -$dw, -850, $dw);
+	fp::diode(850, $dw, 850, -$dw);
+	fp::diode(2550, $dw, 2550, -$dw);
+
+	fp::line(-2550, -3950, -2550, -$dw);
+	fp::line(-2550, -3950, 850, -$dw);
+	fp::line(2550, -3950, 2550, -$dw);
+	fp::line(2550, -3950, -850, -$dw);
+
+	fp::line(-2550, 3950, -2550, $dw);
+	fp::line(-2550, $dw, -850, $dw);
+	fp::line(2550, 3950, 2550, $dw);
+	fp::line(2550, $dw, 850, $dw);
+
+	fp::dot(-2550, $dw);
+	fp::dot(2550, $dw);
+
+	fp::end("Cyril Hrubis");
+	select STDOUT;
+	close($fp);
+}
+
 DO35();
 DO35_stay();
 DO41();
@@ -232,3 +291,4 @@ DO41_stay();
 DO201();
 DO201_stay();
 WOB();
+DB();
