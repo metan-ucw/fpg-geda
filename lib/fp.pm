@@ -311,6 +311,9 @@ sub diode
 
 	add_origin($x1, $y1);
 
+	$x2 -= $x1;
+	$y2 -= $y1;
+
 	lineto($x2/3, $y2/3);
 	line(-$y2/6, $x2/6, $y2/6, -$x2/6);
 	line(-$y2/6, $x2/6, $x2/3, $y2/3);
