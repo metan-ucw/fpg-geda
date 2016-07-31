@@ -417,8 +417,8 @@ sub capacitor
 	my @origin = ($x_origin, $y_origin);
 
 	if ($type and $type eq "polarized") {
-		my $x = $x2 + $vy/6 - $vx/6;
-		my $y = $y2 - $vx/6 - $vy/6;
+		my $x = $x1 - $vy/6 + $vx/6;
+		my $y = $y1 - $vx/6 - $vy/6;
 		plus($x, $y, $x + $vx/10, $y + $vy/10);
 	}
 
