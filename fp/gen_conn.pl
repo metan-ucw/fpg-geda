@@ -66,7 +66,8 @@ sub conn_r_396
 	pin_396(0, 0, "Pin_1", "1", "square");
 
 	for (my $i = 1; $i < $n; $i++) {
-		pin_396($i * 3960, 0, "Pin_$i", "$i", "");
+		my $p = $i+1;
+		pin_396($i * 3960, 0, "Pin_$p", "$p", "");
 	}
 
 	fp::end("Cyril Hrubis");
@@ -105,7 +106,8 @@ sub conn_s_396
 	pin_396(0, 0, "Pin_1", "1", "square");
 
 	for (my $i = 1; $i < $n; $i++) {
-		pin_396($i * 3960, 0, "Pin_$i", "$i", "");
+		my $p = $i+1;
+		pin_396($i * 3960, 0, "Pin_$p", "$p", "");
 	}
 
 	fp::end("Cyril Hrubis");
@@ -173,7 +175,8 @@ sub conn_r_254
 	pin_254(0, 0, "Pin_1", "1", "square");
 
 	for (my $i = 1; $i < $n; $i++) {
-		pin_254($i * 2540, 0, "Pin_$i", "$i", "");
+		my $p = $i+1;
+		pin_254($i * 2540, 0, "Pin_$p", "$p", "");
 	}
 
 	fp::end("Cyril Hrubis");
@@ -212,7 +215,8 @@ sub conn_s_254
 	pin_254(0, 0, "Pin_1", "1", "square");
 
 	for (my $i = 1; $i < $n; $i++) {
-		pin_254($i * 2540, 0, "Pin_$i", "$i", "");
+		my $p = $i+1;
+		pin_254($i * 2540, 0, "Pin_$p", "$p", "");
 	}
 
 	fp::end("Cyril Hrubis");
