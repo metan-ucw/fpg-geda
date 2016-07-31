@@ -197,4 +197,4 @@ pinseq=15
 T -5 243 8 10 0 1 0 0 1
 device=CONNECTOR_15
 T 145 3000 8 10 1 1 0 0 1
-refdes=J?
+refdes=P?

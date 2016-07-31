@@ -93,4 +93,4 @@ pinseq=7
 T -5 243 8 10 0 1 0 0 1
 device=CONNECTOR_7
 T 145 1400 8 10 1 1 0 0 1
-refdes=J?
+refdes=P?

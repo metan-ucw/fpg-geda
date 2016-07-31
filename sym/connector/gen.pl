@@ -61,9 +61,8 @@ for my $type (@types) {
 			pin(200 * $p, $p + 1, ($i > 2 and ($p == 0 or $p == $i - 1)) ? 1 : 0, $type);
 		}
 		sym::text(-5, 243, 0, 1, "device=CONNECTOR_$i");
-		if ($i > 1) {
-			sym::text(145, 200 * $i, 1, 1, "refdes=J?");
-		}
+		my $refdes = $type eq "plug" ? "refdes=P?" : "refdes=J?";
+		sym::text(145, 200 * $i, 1, 1, $refdes);
 		select STDOUT;
 		close($sym);
 	}
