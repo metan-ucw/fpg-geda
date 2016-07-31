@@ -227,6 +227,24 @@ sub pin_254
 	fp::pin($x, $y, 1400, 1700, 2000, 800, $name, $num, $flags);
 }
 
+#
+# Simple connector
+#
+sub conn_1
+{
+	print("Generating con_1.fp...\n");
+	open(my $fp, ">con_1.fp") or die $!;
+	select $fp;
+
+	fp::begin("Connector 1 pin");
+	fp::set_unit("um");
+	fp::circle(1000);
+	pin_254(0, 0, "Pin_1", "1", "square");
+	fp::end("Cyril Hrubis");
+	select STDOUT;
+	close($fp);
+}
+
 for (my $i = 2; $i <= 13; $i++) {
 	conn_r_396($i);
 	conn_s_396($i);
@@ -236,3 +254,5 @@ for (my $i = 2; $i <= 16; $i++) {
 	conn_r_254($i);
 	conn_s_254($i);
 }
+
+conn_1();
