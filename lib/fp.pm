@@ -390,6 +390,17 @@ sub diode
 		line($x2/10 + $y2/10, $y2/10 - $x2/10);
 	}
 
+	if ($type and $type eq "zener") {
+		add_origin(-$x2/3, -$y2/3);
+		line($y2/6, -$x2/6, -3*$x2/24+$y2/6, -3*$y2/24-$x2/6);
+	}
+
+	if ($type and $type eq "schottky") {
+		add_origin(-$x2/3, -$y2/3);
+		line($y2/6, -$x2/6,  $x2/12+$y2/6,  $y2/12-$x2/6);
+		line(-$y2/6, $x2/6, -$x2/12-$y2/6, -$y2/12+$x2/6);
+	}
+
 	($x_origin, $y_origin) = @origin;
 }
 

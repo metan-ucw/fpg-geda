@@ -26,8 +26,11 @@ use warnings;
 #               |\|
 sub DO35
 {
-	print("Generating DO35.fp...\n");
-	open(my $fp, ">DO35.fp") or die $!;
+	my ($type) = @_;
+	my $sufix = $type ? "_$type" : "";
+
+	print("Generating DO35$sufix.fp...\n");
+	open(my $fp, ">DO35$sufix.fp") or die $!;
 	select $fp;
 
 	fp::begin("DO35 Diode");
@@ -35,7 +38,7 @@ sub DO35
 
 	fp::pin_s(0, 0, 500, 1600, "Pin_1", "1", "square");
 	fp::pin_s(5000, 0, 500, 1600, "Pin_2", "2", "");
-	fp::diode(5000, 0, 0, 0);
+	fp::diode(0, 0, 5000, 0, $type);
 
 	fp::end("Cyril Hrubis");
 	select STDOUT;
@@ -77,8 +80,11 @@ sub DO35_stay
 #               |\|
 sub DO41
 {
-	print("Generating DO41.fp...\n");
-	open(my $fp, ">DO41.fp") or die $!;
+	my ($type) = @_;
+	my $sufix = $type ? "_$type" : "";
+
+	print("Generating DO41$sufix.fp...\n");
+	open(my $fp, ">DO41$sufix.fp") or die $!;
 	select $fp;
 
 	fp::begin("DO41 Diode");
@@ -86,7 +92,7 @@ sub DO41
 
 	fp::pin_s(0, 0, 800, 2500, "Pin_1", "1", "square");
 	fp::pin_s(10000, 0, 800, 2500, "Pin_2", "2", "");
-	fp::diode(10000, 0, 0, 0);
+	fp::diode(0, 0, 10000, 0, $type);
 
 	fp::end("Cyril Hrubis");
 	select STDOUT;
@@ -129,8 +135,11 @@ sub DO41_stay
 #               |\|
 sub DO201
 {
-	print("Generating DO201.fp...\n");
-	open(my $fp, ">DO201.fp") or die $!;
+	my ($type) = @_;
+	my $sufix = $type ? "_$type" : "";
+
+	print("Generating DO201$sufix.fp...\n");
+	open(my $fp, ">DO201$sufix.fp") or die $!;
 	select $fp;
 
 	fp::begin("DO201 Diode");
@@ -138,7 +147,7 @@ sub DO201
 
 	fp::pin_s(0, 0, 800, 2500, "Pin_1", "1", "square");
 	fp::pin_s(10000, 0, 800, 2500, "Pin_2", "2", "");
-	fp::diode(10000, 0, 0, 0);
+	fp::diode(0, 0, 10000, 0, $type);
 
 	fp::end("Cyril Hrubis");
 	select STDOUT;
@@ -291,11 +300,17 @@ sub DB
 	close($fp);
 }
 
-DO35();
+my @types = (undef, "zener", "schottky");
+
+for (@types) {
+	DO35($_);
+	DO41($_);
+	DO201($_);
+}
+
 DO35_stay();
-DO41();
 DO41_stay();
-DO201();
 DO201_stay();
+
 WOB();
 DB();

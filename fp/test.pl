@@ -25,7 +25,7 @@ sub test_diode
 {
 	fp::diode(0, 0, 1000, 0);
 	fp::diode(0, 0, 1000, 1000);
-	fp::diode(1000, 0, 600, 700);
+	fp::diode(1000, 0, 600, 700, "zener");
 }
 
 sub test_cap
