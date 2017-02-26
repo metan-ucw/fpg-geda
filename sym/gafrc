@@ -8,4 +8,4 @@
 ; load our symbols
 (for-each (lambda (x)
            (component-library (build-path "../sym/" x))) 
-  '("basic" "connector" "diode" "linear" "power" "relay" "transistor" "switch"))
+  '("basic" "connector" "diode" "linear" "power" "relay" "transistor" "switch" "analog"))
