@@ -12,6 +12,7 @@ all:
 	@./gen_heatsink.pl
 	@./gen_led.pl
 	@./gen_buzzer.pl
+	@./gen_uni.pl
 	@./test.pl > test.fp
 
 clean:
