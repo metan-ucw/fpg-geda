@@ -123,7 +123,7 @@ sub radial_can
 	fp::set_unit("um");
 
 	my $hole = $d+50;
-	my $copper = 2 * $hole;
+	my $copper = 3 * $hole;
 
 	fp::pin_s(0, 0, $hole, $copper, "Pin_1", "1", "square");
 	fp::pin_s($P, 0, $hole, $copper, "Pin_2", "2");
