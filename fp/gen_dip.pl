@@ -43,15 +43,16 @@ sub dip
 
 	fp::pin_s(0, 0, 25, 80, "Pin_1", "1", "square");
 
-	for (my $i = 0; $i <= $n/2-1; $i++) {
-		my $p = $i + 2;
-		fp::pin_s(0, 100*$i, 25, 80, "Pin_$p", "$p", "");
+	for (my $i = 1; $i < $n/2; $i++) {
+		my $p = $i + 1;
+		my $y = 100 * $i;
+		fp::pin_s(0, $y, 25, 80, "Pin_$p", "$p", "");
 	}
 
 	for (my $i = 0; $i < $n/2; $i++) {
 		my $p = $i + $n/2 + 1;
 		my $y = $n/2 - $i - 1;
-		fp::pin_s($w, 100*$y, 25, 80, "Pin_$i", "$i", "");
+		fp::pin_s($w, 100*$y, 25, 80, "Pin_$p", "$p", "");
 	}
 
 	my $d = 50;
