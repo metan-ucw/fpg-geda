@@ -115,6 +115,13 @@ linear
 
 ![lm25xx-1](linear/lm25xx-1.png?raw=true "lm25xx-1")
 ![lm25xx-2](linear/lm25xx-2.png?raw=true "lm25xx-2")
+![lm78L05](linear/lm78L05.png?raw=true "lm78L05")
+![lm78L09](linear/lm78L09.png?raw=true "lm78L09")
+![lm78L10](linear/lm78L10.png?raw=true "lm78L10")
+![lm78L12](linear/lm78L12.png?raw=true "lm78L12")
+![lm78L15](linear/lm78L15.png?raw=true "lm78L15")
+![lm78L18](linear/lm78L18.png?raw=true "lm78L18")
+![lm78L24](linear/lm78L24.png?raw=true "lm78L24")
 ![lm78S05](linear/lm78S05.png?raw=true "lm78S05")
 ![lm78S09](linear/lm78S09.png?raw=true "lm78S09")
 ![lm78S10](linear/lm78S10.png?raw=true "lm78S10")
