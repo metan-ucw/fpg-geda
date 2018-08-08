@@ -1,6 +1,7 @@
 all:
 	@./gen_dip.pl
 	@./gen_TO220.pl
+	@./gen_TO225.pl
 	@./gen_TO92.pl
 	@./gen_resistor.pl
 	@./gen_pot.pl
