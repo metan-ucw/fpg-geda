@@ -122,6 +122,7 @@ linear
 ![lm78L15](linear/lm78L15.png?raw=true "lm78L15")
 ![lm78L18](linear/lm78L18.png?raw=true "lm78L18")
 ![lm78L24](linear/lm78L24.png?raw=true "lm78L24")
+![lm78Lxx](linear/lm78Lxx.png?raw=true "lm78Lxx")
 ![lm78S05](linear/lm78S05.png?raw=true "lm78S05")
 ![lm78S09](linear/lm78S09.png?raw=true "lm78S09")
 ![lm78S10](linear/lm78S10.png?raw=true "lm78S10")
