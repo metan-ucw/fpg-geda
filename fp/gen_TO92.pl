@@ -47,9 +47,9 @@ sub to92
 
 	fp::hline(-1992, 1992, -1671);
 
-	my $pin_spacing = $type eq "bl" ? 2540 : 1270;
+	my $pin_spacing = $type eq "bl" ? 2540 : 1900;
 	my $drill = 500;
-	my $copper = $type ne "sl" ? 1200 : 1000;
+	my $copper = 1500;
 	my $middle_pin_off = $type eq "bm" ? 1270 : 0;
 
 	fp::pin_s(-$pin_spacing, 0, $drill, $copper, "Pin_1", 1, "square");
