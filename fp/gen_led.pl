@@ -43,8 +43,8 @@ sub led5
 	fp::begin("5mm LED Diode");
 	fp::set_unit("um");
 
-	fp::pin_s(-1270, 0, 600, 1200, "Pin_1", "1", "square");
-	fp::pin_s(1270, 0, 600, 1200, "Pin_2", "2", "");
+	fp::pin_s(-1270, 0, 600, 1800, "Pin_1", "1", "square");
+	fp::pin_s(1270, 0, 600, 1800, "Pin_2", "2", "");
 
 	fp::diode(-1270, 0, 1270, 0, "led");
 
