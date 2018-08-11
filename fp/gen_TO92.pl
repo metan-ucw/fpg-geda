@@ -52,9 +52,9 @@ sub to92
 	my $copper = 1500;
 	my $middle_pin_off = $type eq "bm" ? 1270 : 0;
 
-	fp::pin_s(-$pin_spacing, 0, $drill, $copper, "Pin_1", 1, "square");
+	fp::pin_s(-$pin_spacing, 0, $drill, $copper, "Pin_3", 3);
 	fp::pin_s(0, $middle_pin_off, $drill, $copper, "Pin_2", 2);
-	fp::pin_s($pin_spacing, 0, $drill, $copper, "Pin_3", 3);
+	fp::pin_s($pin_spacing, 0, $drill, $copper, "Pin_1", 1, "square");
 
 	fp::end("Cyril Hrubis");
 	select STDOUT;
