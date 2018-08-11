@@ -86,7 +86,7 @@ sub gen_mos
 
 sub gen_transistor
 {
-	my ($type) = @_;
+	my ($type, $tname, $pmap) = @_;
 	my @pins;
 	my $y = 500;
 
@@ -149,19 +149,27 @@ sub gen_transistor
 		@pins = ("D", "G", "S");
 	}
 
+	$pmap = [1, 2, 3] if not defined($pmap);
+
+	my $p = $pmap->[0];
+
 	sym::pin(600, 900, 600, 800,
-		 ["pas"], [$pins[0]], ["1"], ["1"]);
+		 ["pas"], [$pins[0]], [$p], [$p]);
 
+	$p = $pmap->[1];
 	sym::pin(100, $y, 200, $y,
-		 ["pas"], [$pins[1]], ["2"], ["2"]);
+		 ["pas"], [$pins[1]], [$p], [$p]);
 
+	$p = $pmap->[2];
 	sym::pin(600, 100, 600, 200,
-		 ["pas"], [$pins[2]], ["3"], ["3"]);
+		 ["pas"], [$pins[2]], [$p], [$p]);
 
-	my $name = uc($type);
+	my $name = $tname;
+	$name = uc($type) if not defined($name);
 
 	sym::text(195, 795, 1, 1, "refdes=Q?");
 	sym::text(95, 95, 0, 1, "device=TRANSISTOR_$name");
+	sym::text(10, 95, 1, 1, "value=$name") if defined($tname);
 }
 
 my @types = ("npn", "pnp", "n-jfet", "p-jfet", "p-mos-e", "n-mos-e", "p-mos-e-diode", "n-mos-e-diode");
@@ -171,6 +179,17 @@ for my $type (@types) {
 	open(my $sym, ">$type-1.sym") or die $!;
 	select $sym;
 	gen_transistor($type);
+	select STDOUT;
+	close($sym);
+}
+
+my @npn = (["BD135", "npn", [2, 3, 1]], ["BC547", "npn", [1, 2, 3]]);
+
+for my $type (@npn) {
+	print("Generating $type->[0].sym...\n");
+	open(my $sym, ">$type->[0].sym") or die $!;
+	select $sym;
+	gen_transistor($type->[1], $type->[0], $type->[2]);
 	select STDOUT;
 	close($sym);
 }

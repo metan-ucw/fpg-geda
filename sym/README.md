@@ -214,6 +214,8 @@ switch
 transistor
 ----------
 
+![BC547](transistor/BC547.png?raw=true "BC547")
+![BD135](transistor/BD135.png?raw=true "BD135")
 ![npn-1](transistor/npn-1.png?raw=true "npn-1")
 ![n-jfet-1](transistor/n-jfet-1.png?raw=true "n-jfet-1")
 ![n-mos-e-1](transistor/n-mos-e-1.png?raw=true "n-mos-e-1")
