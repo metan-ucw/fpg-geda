@@ -14,6 +14,7 @@ all:
 	@./gen_led.pl
 	@./gen_buzzer.pl
 	@./gen_uni.pl
+	@./gen_screws.pl
 	@./test.pl > test.fp
 
 clean:
