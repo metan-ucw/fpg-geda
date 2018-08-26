@@ -23,6 +23,7 @@ sub pin
 sub rect
 {
 	fp::rect(0, 0, 10000, 4600);
+	fp::hline(0, 10000, 1000);
 }
 
 #
