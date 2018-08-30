@@ -23,9 +23,9 @@ pintype=pas
 T 330 595 5 6 1 1 0 0 1
 pinlabel=IN
 T 205 645 5 10 1 1 0 6 1
-pinnumber=1
+pinnumber=3
 T 100 600 5 10 0 0 0 0 1
-pinseq=1
+pinseq=3
 }
 P 1300 600 1200 600 1 0 0
 {
@@ -34,9 +34,9 @@ pintype=pas
 T 1070 595 5 6 1 1 0 6 1
 pinlabel=OUT
 T 1195 645 5 10 1 1 0 0 1
-pinnumber=3
+pinnumber=1
 T 1300 600 5 10 0 0 0 0 1
-pinseq=3
+pinseq=1
 }
 T 1095 845 8 10 1 1 0 6 1
 refdes=U?
