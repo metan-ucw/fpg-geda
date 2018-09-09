@@ -27,22 +27,17 @@ use warnings;
 sub DO35
 {
 	my ($type) = @_;
-	my $sufix = $type ? "_$type" : "";
+	my $suffix = $type ? "_$type" : "";
 
-	print("Generating DO35$sufix.fp...\n");
-	open(my $fp, ">DO35$sufix.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("DO35$suffix", "DO35 Diode", "Cyril Hrubis");
 
-	fp::begin("DO35 Diode");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::pin_s(0, 0, 500, 1600, "Pin_1", "1", "square");
-	fp::pin_s(5000, 0, 500, 1600, "Pin_2", "2", "");
-	fp::diode(0, 0, 5000, 0, $type);
+	fp::pin_s($fp, 0, 0, 500, 1600, "Pin_1", "1", "square");
+	fp::pin_s($fp, 5000, 0, 500, 1600, "Pin_2", "2");
+	fp::diode($fp, 0, 0, 5000, 0, $type);
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -50,21 +45,16 @@ sub DO35
 #
 sub DO35_stay
 {
-	print("Generating DO35_stay.fp...\n");
-	open(my $fp, ">DO35_stay.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("DO35_stay", "DO35 Diode staying", "Cyril Hrubis");
 
-	fp::begin("DO35 Diode staying");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::pin_s(0, 0, 500, 1600, "Pin_1", "1", "square");
-	fp::circle(0, 0, 800);
-	fp::hline(800, 1850, 0);
-	fp::pin_s(2100, 0, 500, 1600, "Pin_2", "2", "");
+	fp::pin_s($fp, 0, 0, 500, 1600, "Pin_1", "1", "square");
+	fp::circle($fp, 0, 0, 800);
+	fp::hline($fp, 800, 1850, 0);
+	fp::pin_s($fp, 2100, 0, 500, 1600, "Pin_2", "2");
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -81,22 +71,17 @@ sub DO35_stay
 sub DO41
 {
 	my ($type) = @_;
-	my $sufix = $type ? "_$type" : "";
+	my $suffix = $type ? "_$type" : "";
 
-	print("Generating DO41$sufix.fp...\n");
-	open(my $fp, ">DO41$sufix.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("DO41$suffix", "DO41 Diode", "Cyril Hrubis");
 
-	fp::begin("DO41 Diode");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::pin_s(0, 0, 800, 2500, "Pin_1", "1", "square");
-	fp::pin_s(10000, 0, 800, 2500, "Pin_2", "2", "");
-	fp::diode(0, 0, 10000, 0, $type);
+	fp::pin_s($fp, 0, 0, 800, 2500, "Pin_1", "1", "square");
+	fp::pin_s($fp, 10000, 0, 800, 2500, "Pin_2", "2");
+	fp::diode($fp, 0, 0, 10000, 0, $type);
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -104,21 +89,16 @@ sub DO41
 #
 sub DO41_stay
 {
-	print("Generating DO41_stay.fp...\n");
-	open(my $fp, ">DO41_stay.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("DO41_stay", "DO41 Diode staying", "Cyril Hrubis");
 
-	fp::begin("DO41 Diode staying");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::pin_s(0, 0, 800, 2500, "Pin_1", "1", "square");
-	fp::circle(0, 0, 1350);
-	fp::hline(1350, 3100, 0);
-	fp::pin_s(3500, 0, 800, 2500, "Pin_2", "2", "");
+	fp::pin_s($fp, 0, 0, 800, 2500, "Pin_1", "1", "square");
+	fp::circle($fp, 0, 0, 1350);
+	fp::hline($fp, 1350, 3100, 0);
+	fp::pin_s($fp, 3500, 0, 800, 2500, "Pin_2", "2");
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -136,22 +116,17 @@ sub DO41_stay
 sub DO201
 {
 	my ($type) = @_;
-	my $sufix = $type ? "_$type" : "";
+	my $suffix = $type ? "_$type" : "";
 
-	print("Generating DO201$sufix.fp...\n");
-	open(my $fp, ">DO201$sufix.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("DO201$suffix", "DO201 Diode", "Cyril Hrubis");
 
-	fp::begin("DO201 Diode");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::pin_s(0, 0, 800, 2500, "Pin_1", "1", "square");
-	fp::pin_s(10000, 0, 800, 2500, "Pin_2", "2", "");
-	fp::diode(0, 0, 10000, 0, $type);
+	fp::pin_s($fp, 0, 0, 800, 2500, "Pin_1", "1", "square");
+	fp::pin_s($fp, 10000, 0, 800, 2500, "Pin_2", "2");
+	fp::diode($fp, 0, 0, 10000, 0, $type);
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -159,21 +134,16 @@ sub DO201
 #
 sub DO201_stay
 {
-	print("Generating DO201_stay.fp...\n");
-	open(my $fp, ">DO201_stay.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("DO201_stay", "DO201 Diode staying", "Cyril Hrubis");
 
-	fp::begin("DO201 Diode staying");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::pin_s(0, 0, 1100, 4000, "Pin_1", "1", "square");
-	fp::circle(0, 0, 2500);
-	fp::hline(2500, 5450, 0);
-	fp::pin_s(6000, 0, 1100, 4000, "Pin_2", "2", "");
+	fp::pin_s($fp, 0, 0, 1100, 4000, "Pin_1", "1", "square");
+	fp::circle($fp, 0, 0, 2500);
+	fp::hline($fp, 2500, 5450, 0);
+	fp::pin_s($fp, 6000, 0, 1100, 4000, "Pin_2", "2");
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -217,28 +187,23 @@ sub DO201_stay
 #
 sub WOB
 {
-	print("Generating wob_bridge.fp...\n");
-	open(my $fp, ">wob_bridge.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("wob_bridge", "WOB Bridge rectifier", "Cyril Hrubis");
 
-	fp::begin("WOB Bridge rectifier");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::circle(0, 0, 4600);
+	fp::circle($fp, 0, 0, 4600);
 
-	fp::diode(0, -3600, -3600, 0);
-	fp::diode(0, 3600, -3600, 0);
-	fp::diode(3600, 0, 0, -3600);
-	fp::diode(3600, 0, 0, 3600);
+	fp::diode($fp, 0, -3600, -3600, 0);
+	fp::diode($fp, 0, 3600, -3600, 0);
+	fp::diode($fp, 3600, 0, 0, -3600);
+	fp::diode($fp, 3600, 0, 0, 3600);
 
-	fp::pin_s(-3600, 0, 810, 2000, "+", "1", "square");
-	fp::pin_s(0, 3600, 810, 2000, "~", "2", "");
-	fp::pin_s(3600, 0, 810, 2000, "-", "3", "");
-	fp::pin_s(0, -3600, 810, 2000, "~", "4", "");
+	fp::pin_s($fp, -3600, 0, 810, 2000, "+", "1", "square");
+	fp::pin_s($fp, 0, 3600, 810, 2000, "~", "2");
+	fp::pin_s($fp, 3600, 0, 810, 2000, "-", "3");
+	fp::pin_s($fp, 0, -3600, 810, 2000, "~", "4");
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -260,44 +225,39 @@ sub WOB
 #
 sub DB
 {
-	print("Generating db_bridge.fp...\n");
-	open(my $fp, ">db_bridge.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("db_bridge", "DB Bridge rectifier", "Cyril Hrubis");
 
-	fp::begin("WOB Bridge rectifier");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::rect(-4300, -4000, 8600, 8000);
-	fp::vline(-3900, -4000, 4000);
+	fp::rect($fp, -4300, -4000, 8600, 8000);
+	fp::vline($fp, -3900, -4000, 4000);
 
-	fp::pin_s(-2550, 3950, 600, 1200, "+", "1", "square");
-	fp::pin_s(2550, -3950, 600, 1200, "~", "2");
-	fp::pin_s(2550, 3950, 600, 1200, "-", "3");
-	fp::pin_s(-2550, -3950, 600, 1200, "~", "4");
+	fp::pin_s($fp, -2550, 3950, 600, 1200, "+", "1", "square");
+	fp::pin_s($fp, 2550, -3950, 600, 1200, "~", "2");
+	fp::pin_s($fp, 2550, 3950, 600, 1200, "-", "3");
+	fp::pin_s($fp, -2550, -3950, 600, 1200, "~", "4");
 
 	my $dw = 2000;
 
-	fp::diode(-2550, -$dw, -2550, $dw);
-	fp::diode(-850, -$dw, -850, $dw);
-	fp::diode(850, $dw, 850, -$dw);
-	fp::diode(2550, $dw, 2550, -$dw);
+	fp::diode($fp, -2550, -$dw, -2550, $dw);
+	fp::diode($fp, -850, -$dw, -850, $dw);
+	fp::diode($fp, 850, $dw, 850, -$dw);
+	fp::diode($fp, 2550, $dw, 2550, -$dw);
 
-	fp::line(-2550, -3950, -2550, -$dw);
-	fp::line(-2550, -3950, 850, -$dw);
-	fp::line(2550, -3950, 2550, -$dw);
-	fp::line(2550, -3950, -850, -$dw);
+	fp::line($fp, -2550, -3950, -2550, -$dw);
+	fp::line($fp, -2550, -3950, 850, -$dw);
+	fp::line($fp, 2550, -3950, 2550, -$dw);
+	fp::line($fp, 2550, -3950, -850, -$dw);
 
-	fp::line(-2550, 3950, -2550, $dw);
-	fp::line(-2550, $dw, -850, $dw);
-	fp::line(2550, 3950, 2550, $dw);
-	fp::line(2550, $dw, 850, $dw);
+	fp::line($fp, -2550, 3950, -2550, $dw);
+	fp::line($fp, -2550, $dw, -850, $dw);
+	fp::line($fp, 2550, 3950, 2550, $dw);
+	fp::line($fp, 2550, $dw, 850, $dw);
 
-	fp::dot(-2550, $dw);
-	fp::dot(2550, $dw);
+	fp::dot($fp, -2550, $dw);
+	fp::dot($fp, 2550, $dw);
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 my @types = (undef, "zener", "schottky");

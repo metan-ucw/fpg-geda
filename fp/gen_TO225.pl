@@ -15,17 +15,19 @@ use warnings;
 
 sub pin
 {
-	my ($x, $y, $nr, $type) = @_;
+	my ($fp, $x, $y, $nr, $type) = @_;
 
-	fp::pin($x, $y, 1700, 2000, 2200, 800, "Pin_$nr", "$nr", $type);
+	fp::pin($fp, $x, $y, 1700, 2000, 2200, 800, "Pin_$nr", "$nr", $type);
 }
 
 sub rect
 {
-	fp::rect(0, 0, 7800, 4000);
-	fp::hline(1800, 6000, 600);
-	fp::vline(1800, 0, 600);
-	fp::vline(6000, 0, 600);
+	my ($fp) = @_;
+
+	fp::rect($fp, 0, 0, 7800, 4000);
+	fp::hline($fp, 1800, 6000, 600);
+	fp::vline($fp, 1800, 0, 600);
+	fp::vline($fp, 6000, 0, 600);
 }
 
 #
@@ -67,23 +69,18 @@ sub rect
 #
 sub to225
 {
-	print("Generating TO225.fp...\n");
-	open(my $fp, ">TO225.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("TO225", "TO225", "Cyril Hrubis");
+	fp::set_unit($fp, "um");
 
-	fp::begin("TO225");
-	fp::set_unit("um");
-	rect();
-	fp::set_origin(1360, 1760);
+	rect($fp);
+	fp::set_origin($fp, 1360, 1760);
 
-	pin(0, 0, 1, "square");
+	pin($fp, 0, 0, 1, "square|long");
 	for (my $i = 2; $i <= 3; $i++) {
-		pin(($i-1)*2540, 0, $i, "");
+		pin($fp, ($i-1)*2540, 0, $i, "long");
 	}
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 to225();

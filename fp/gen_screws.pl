@@ -22,30 +22,24 @@ use warnings;
 sub hole
 {
 	my ($size, $head_size, $var) = @_;
+	my $fp = fp::begin("M${size}-$var", "M${size}", "Cyril Hrubis");
 
-	print("Generating M${size}-$var.fp...\n");
-	open(my $fp, ">M${size}-$var.fp") or die $!;
-	select $fp;
-
-	fp::begin("M${size}");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
 	my $radius = ${size} * 1000 / 2 + 100;
 	my $hs = $head_size * 1000 / 2;
 
 	#fp::circle(0, 0, $radius);
-	fp::hline($radius + 1000, $hs, 0);
-	fp::hline(-$radius - 1000, -$hs, 0);
-	fp::vline(0, $radius + 1000, $hs);
-	fp::vline(0, -$radius - 1000, -$hs);
+	fp::hline($fp, $radius + 1000, $hs, 0);
+	fp::hline($fp, -$radius - 1000, -$hs, 0);
+	fp::vline($fp, 0, $radius + 1000, $hs);
+	fp::vline($fp, 0, -$radius - 1000, -$hs);
 
 	my $copper_size = $var == 1 ? ($size+0.5) * 1000 : $head_size * 1000;
 
-	fp::pin_s(0, 0, $size * 1000, $copper_size, "Pin_1", 1);
+	fp::pin_s($fp, 0, 0, $size * 1000, $copper_size, "Pin_1", 1);
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 # screew size, head size in mm

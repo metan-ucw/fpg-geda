@@ -20,21 +20,16 @@ sub uni
 {
 	my ($x, $y) = @_;
 
-	print("Generating uni_${x}_$y.fp...\n");
-	open(my $fp, ">uni_${x}_$y.fp") or die $!;
-	select $fp;
-	fp::begin("Universal PCB ${x}x$y");
+	my $fp = fp::begin("uni_${x}_$y", "Universal PCB ${x}x$y", "Cyril Hrubis");
 
 	for (my $i = 0; $i < $x; $i++) {
 		for (my $j = 0; $j < $y; $j++) {
 			my $p = $i + $j * $y;
-			fp::pin_s(100 * $i, 100 * $j, 25, 80, "Pin_$p", $p);
+			fp::pin_s($fp, 100 * $i, 100 * $j, 25, 80, "Pin_$p", $p);
 		}
 	}
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 uni(1, 1);

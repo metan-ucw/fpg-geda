@@ -15,7 +15,7 @@ all:
 	@./gen_buzzer.pl
 	@./gen_uni.pl
 	@./gen_screws.pl
-	@./test.pl > test.fp
+	@./test.pl
 
 clean:
 	rm -f *.fp *.fp-

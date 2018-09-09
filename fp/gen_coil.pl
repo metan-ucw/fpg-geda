@@ -36,22 +36,17 @@ sub gen_radial_coil
 {
 	my ($a, $b) = @_;
 
-	print("Radial coil radial_coil_${a}_${b}.fp...\n");
-	open(my $fp, ">radial_coil_${a}_${b}.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("radial_coil_${a}_${b}", "Radial Coil ${a}mm x ${b}mm", "Cyril Hrubis");
 
-	fp::begin("Radial Coil ${a}mm x ${b}mm");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::pin_s(0, 0, 700, 2000, "Pin_1", "1", "");
-	fp::pin_s(0, 1000 * $b, 700, 2000, "Pin_2", "2", "");
+	fp::pin_s($fp, 0, 0, 700, 2000, "Pin_1", "1", "");
+	fp::pin_s($fp, 0, 1000 * $b, 700, 2000, "Pin_2", "2", "");
 
-	fp::coil(0, 0, 0, 1000*$b, 3);
-	fp::rect((-1000 * ($a+1))/2, -1000, 1000 * ($a + 2), 1000 * ($b + 2));
+	fp::coil($fp, 0, 0, 0, 1000*$b, 3);
+	fp::rect($fp, (-1000 * ($a+1))/2, -1000, 1000 * ($a + 2), 1000 * ($b + 2));
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 my @sizes = ([16, 7], [14, 8], [15, 8], [16, 8], [15, 9], [16, 9], [19, 8],

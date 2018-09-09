@@ -66,50 +66,45 @@ use warnings;
 #       |3.4mm|
 sub V7141
 {
-	print("Generating heatsink_V7141.fp...\n");
-	open(my $fp, ">heatsink_V7141.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("heatsink_V7141", "V7141 TO220 heat sink with soldering pin", "Cyril Hrubis");
 
-	fp::begin("V7141 TO220 heat sink with soldering pin");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::pin_s(0, 0, 1700, 3000, "Pin_1", "1");
-	fp::set_origin(-12000, -9200);
+	fp::pin_s($fp, 0, 0, 1700, 3000, "Pin_1", "1");
+	fp::set_origin($fp, -12000, -9200);
 
-	fp::vline(16000);
-	fp::hlineto(1000);
-	fp::vlineto(6600);
-	fp::hlineto(22000);
-	fp::vlineto(-6600);
-	fp::hlineto(1000);
-	fp::vlineto(16000);
-	fp::hlineto(-1000);
-	fp::vlineto(-7800);
-	fp::hlineto(-3400);
-	fp::vlineto(7800);
-	fp::hlineto(-1000);
-	fp::vlineto(-7800);
-	fp::hlineto(-3400);
-	fp::vlineto(7800);
-	fp::hlineto(-1000);
-	fp::vlineto(-3000);
-	fp::lineto(-1700, -2800);
-	fp::hlineto(-1000);
-	fp::lineto(-1700, 2800);
-	fp::vlineto(3000);
-	fp::hlineto(-1000);
-	fp::vlineto(-7800);
-	fp::hlineto(-3400);
-	fp::vlineto(7800);
-	fp::hlineto(-1000);
-	fp::vlineto(-7800);
-	fp::hlineto(-3400);
-	fp::vlineto(7800);
-	fp::hlineto(-1000);
+	fp::vline($fp, 16000);
+	fp::hlineto($fp, 1000);
+	fp::vlineto($fp, 6600);
+	fp::hlineto($fp, 22000);
+	fp::vlineto($fp, -6600);
+	fp::hlineto($fp, 1000);
+	fp::vlineto($fp, 16000);
+	fp::hlineto($fp, -1000);
+	fp::vlineto($fp, -7800);
+	fp::hlineto($fp, -3400);
+	fp::vlineto($fp, 7800);
+	fp::hlineto($fp, -1000);
+	fp::vlineto($fp, -7800);
+	fp::hlineto($fp, -3400);
+	fp::vlineto($fp, 7800);
+	fp::hlineto($fp, -1000);
+	fp::vlineto($fp, -3000);
+	fp::lineto($fp, -1700, -2800);
+	fp::hlineto($fp, -1000);
+	fp::lineto($fp, -1700, 2800);
+	fp::vlineto($fp, 3000);
+	fp::hlineto($fp, -1000);
+	fp::vlineto($fp, -7800);
+	fp::hlineto($fp, -3400);
+	fp::vlineto($fp, 7800);
+	fp::hlineto($fp, -1000);
+	fp::vlineto($fp, -7800);
+	fp::hlineto($fp, -3400);
+	fp::vlineto($fp, 7800);
+	fp::hlineto($fp, -1000);
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 V7141();

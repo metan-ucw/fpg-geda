@@ -29,21 +29,16 @@ use warnings;
 #
 sub ceramic_cap_5mm
 {
-	print("Generating ceramic_cap_5mm.fp...\n");
-	open(my $fp, ">ceramic_cap_5mm.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("ceramic_cap_5mm", "Ceramic capacitor 5mm", "Cyril Hrubis");
 
-	fp::begin("Ceramic capacitor 5mm");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::pin_s(0, 0, 600, 2000, "Pin_1", "1", "");
-	fp::pin_s(5000, 0, 600, 2000, "Pin_2", "2", "");
+	fp::pin_s($fp, 0, 0, 600, 2000, "Pin_1", "1", "");
+	fp::pin_s($fp, 5000, 0, 600, 2000, "Pin_2", "2", "");
 
-	fp::capacitor(0, 0, 5000, 0);
+	fp::capacitor($fp, 0, 0, 5000, 0);
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -72,24 +67,18 @@ sub large_radial_can
 	$D *= 1000;
 	$P *= 1000;
 
-	print("Generating radial_can_cap_${D}_${P}.fp...\n");
-	open(my $fp, ">radial_can_cap_${D}_${P}.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("radial_can_cap_${D}_${P}", "Radial can capacitor ${D}um ${P}um", "Cyril Hrubis");
 
-	fp::begin("Radial can capacitor ${D}um ${P}um");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
+	fp::pin_s($fp, 0, 0, 600, 2000, "Pin_1", "1", "square");
+	fp::pin_s($fp, $P, 0, 600, 2000, "Pin_2", "2", "");
 
-	fp::pin_s(0, 0, 600, 2000, "Pin_1", "1", "square");
-	fp::pin_s($P, 0, 600, 2000, "Pin_2", "2", "");
+	fp::capacitor($fp, 0, 0, $P, 0, "polarized");
 
-	fp::capacitor(0, 0, $P, 0, "polarized");
+	fp::circle($fp, $P/2, 0, $D/2);
 
-	fp::circle($P/2, 0, $D/2);
-
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -115,25 +104,20 @@ sub radial_can
 {
 	my ($d, $D, $P) = @_;
 
-	print("Generating radial_can_cap_${D}_${P}.fp...\n");
-	open(my $fp, ">radial_can_cap_${D}_${P}.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("radial_can_cap_${D}_${P}", "Radial can capacitor ${D}um ${P}um", "Cyril Hrubis");
 
-	fp::begin("Radial can capacitor ${D}um ${P}um");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
 	my $hole = $d+50;
 	my $copper = 3 * $hole;
 
-	fp::pin_s(0, 0, $hole, $copper, "Pin_1", "1", "square");
-	fp::pin_s($P, 0, $hole, $copper, "Pin_2", "2");
+	fp::pin_s($fp, 0, 0, $hole, $copper, "Pin_1", "1", "square");
+	fp::pin_s($fp, $P, 0, $hole, $copper, "Pin_2", "2");
 
-	fp::capacitor(0, 0, $P, 0, "polarized");
-	fp::circle($P/2, 0, $D/2);
+	fp::capacitor($fp, 0, 0, $P, 0, "polarized");
+	fp::circle($fp, $P/2, 0, $D/2);
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 ceramic_cap_5mm

@@ -29,23 +29,17 @@ use warnings;
 #
 sub buzzer_5mm
 {
-	print("Generating buzzer_5mm.fp...\n");
-	open(my $fp, ">buzzer_5mm.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("buzzer_5mm", "buzzer 5mm", "Cyril Hrubis");
+	fp::set_unit($fp, "um");
 
-	fp::begin("buzzer 5mm");
-	fp::set_unit("um");
+	fp::circle($fp, 6300);
 
-	fp::circle(6300);
+	fp::plus($fp, -4000, 0, -3500, 0);
+	fp::pin_s($fp, -2500, 0, 600, 1400, "Pin_1", 1, "square");
+	fp::hline($fp, 3500, 4300, 0);
+	fp::pin_s($fp, 2500, 0, 600, 1400, "Pin_2", 2);
 
-	fp::plus(-4000, 0, -3500, 0);
-	fp::pin_s(-2500, 0, 600, 1400, "Pin_1", 1, "square");
-	fp::hline(3500, 4300, 0);
-	fp::pin_s(2500, 0, 600, 1400, "Pin_2", 2);
-
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 buzzer_5mm();

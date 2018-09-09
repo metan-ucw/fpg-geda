@@ -35,28 +35,22 @@ use warnings;
 #
 sub TP160
 {
-	print("Generating pot_TP160.fp...\n");
-	open(my $fp, ">pot_TP160.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("pot_TP160", "Tesla potentiometer TP160A/TP160P", "Cyril Hrubis");
+	fp::set_unit($fp, "um");
 
-	fp::begin("Tesla potentiometer TP160A/TP160P");
-	fp::set_unit("um");
+	fp::pin_s($fp, 0, 0, 1400, 3000, "Pin_1", "1", "long");
+	fp::pin_s($fp, 5000, 0, 1400, 3000, "Pin_2", "2", "long");
+	fp::pin_s($fp, 10000, 0, 1400, 3000, "Pin_3", "3", "long");
 
-	fp::pin_s(0, 0, 1400, 3000, "Pin_1", "1", "");
-	fp::pin_s(5000, 0, 1400, 3000, "Pin_2", "2", "");
-	fp::pin_s(10000, 0, 1400, 3000, "Pin_3", "3", "");
+	fp::add_origin($fp, -3000, -8800);
+	fp::rect($fp, 16000, 10500);
+	fp::rect($fp, 4500, 10500, 7000, 2000);
 
-	fp::add_origin(-3000, -8800);
-	fp::rect(16000, 10500);
-	fp::rect(4500, 10500, 7000, 2000);
+	fp::line($fp, 4500, 10750, 11500, 11250);
+	fp::line($fp, 4500, 11250, 11500, 11750);
+	fp::line($fp, 4500, 11750, 11500, 12250);
 
-	fp::line(4500, 10750, 11500, 11250);
-	fp::line(4500, 11250, 11500, 11750);
-	fp::line(4500, 11750, 11500, 12250);
-
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 TP160();

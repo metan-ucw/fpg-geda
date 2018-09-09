@@ -36,29 +36,24 @@ sub to92
 {
 	my ($type) = @_;
 
-	print("Generating TO92_$type.fp...\n");
-	open(my $fp, ">TO92_$type.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("TO92_$type", "TO92", "Cyril Hrubis");
 
-	fp::begin("TO92");
-	fp::set_unit("um");
+	fp::set_unit($fp, "um");
 
-	fp::arc(2600, 2600, -40, 260);
+	fp::arc($fp, 2600, 2600, -40, 260);
 
-	fp::hline(-1992, 1992, -1671);
+	fp::hline($fp, -1992, 1992, -1671);
 
 	my $pin_spacing = $type eq "bl" ? 2540 : 1900;
 	my $drill = 500;
 	my $copper = 1500;
 	my $middle_pin_off = $type eq "bm" ? 1270 : 0;
 
-	fp::pin_s(-$pin_spacing, 0, $drill, $copper, "Pin_3", 3);
-	fp::pin_s(0, $middle_pin_off, $drill, $copper, "Pin_2", 2);
-	fp::pin_s($pin_spacing, 0, $drill, $copper, "Pin_1", 1, "square");
+	fp::pin_s($fp, -$pin_spacing, 0, $drill, $copper, "Pin_3", 3, "long");
+	fp::pin_s($fp, 0, $middle_pin_off, $drill, $copper, "Pin_2", 2, "long");
+	fp::pin_s($fp, $pin_spacing, 0, $drill, $copper, "Pin_1", 1, "square|long");
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 to92('sl');

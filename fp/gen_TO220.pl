@@ -15,15 +15,17 @@ use warnings;
 
 sub pin
 {
-	my ($x, $y, $nr, $type) = @_;
+	my ($fp, $x, $y, $nr, $type) = @_;
 
-	fp::pin($x, $y, 1400, 1700, 2000, 800, "Pin_$nr", "$nr", $type);
+	fp::pin($fp, $x, $y, 1400, 1700, 2000, 800, "Pin_$nr", "$nr", $type);
 }
 
 sub rect
 {
-	fp::rect(0, 0, 10000, 4600);
-	fp::hline(0, 10000, 1000);
+	my ($fp) = @_;
+
+	fp::rect($fp, 0, 0, 10000, 4600);
+	fp::hline($fp, 0, 10000, 1000);
 }
 
 #
@@ -68,23 +70,18 @@ sub rect
 #
 sub to220_5
 {
-	print("Generating TO220_5.fp...\n");
-	open(my $fp, ">TO220_5.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("TO220_5", "TO220 5 pins", "Cyril Hrubis");
+	fp::set_unit($fp, "um");
 
-	fp::begin("TO220 5 pin");
-	fp::set_unit("um");
-	rect();
-	fp::set_origin(1600, 2600);
+	rect($fp);
+	fp::set_origin($fp, 1600, 2600);
 
-	pin(0, 0, 1, "square");
+	pin($fp, 0, 0, 1, "square|long");
 	for (my $i = 2; $i <= 5; $i++) {
-		pin(($i-1)*1700, 0, "$i", "");
+		pin($fp, ($i-1)*1700, 0, "$i", "long");
 	}
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -129,23 +126,18 @@ sub to220_5
 #
 sub to220
 {
-	print("Generating TO220.fp...\n");
-	open(my $fp, ">TO220.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("TO220", "TO220", "Cyril Hrubis");
+	fp::set_unit($fp, "um");
 
-	fp::begin("TO220");
-	fp::set_unit("um");
-	rect();
-	fp::set_origin(2460, 2600);
+	rect($fp);
+	fp::set_origin($fp, 2460, 2600);
 
-	pin(0, 0, 1, "square");
+	pin($fp, 0, 0, 1, "square");
 	for (my $i = 2; $i <= 3; $i++) {
-		pin(($i-1)*2540, 0, $i, "");
+		pin($fp, ($i-1)*2540, 0, $i, "");
 	}
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 to220_5();

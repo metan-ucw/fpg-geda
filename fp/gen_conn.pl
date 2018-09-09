@@ -47,32 +47,27 @@ sub conn_r_396
 {
 	my ($n) = @_;
 
-	print("Generating con_${n}_r_396.fp...\n");
-	open(my $fp, ">con_${n}_r_396.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("con_${n}_r_396", "Connector CH $n R 3.96mm", "Cyril Hrubis");
+
+	fp::set_unit($fp, "um");
 
 	my $l = $n * 3960;
 
-	fp::begin("Connector CH $n R 3.96mm");
-	fp::set_unit("um");
+	fp::rect($fp, $l, 17500);
 
-	fp::rect($l, 17500);
+	fp::hline($fp, 0, $l, 9700);
+	fp::hline($fp, 0, $l, 12000);
 
-	fp::hline(0, $l, 9700);
-	fp::hline(0, $l, 12000);
+	fp::set_origin($fp, 1980, 15900);
 
-	fp::set_origin(1980, 15900);
-
-	pin_396(0, 0, "Pin_1", "1", "square");
+	pin_396($fp, 0, 0, "Pin_1", "1", "square");
 
 	for (my $i = 1; $i < $n; $i++) {
 		my $p = $i+1;
-		pin_396($i * 3960, 0, "Pin_$p", "$p", "");
+		pin_396($fp, $i * 3960, 0, "Pin_$p", "$p", "");
 	}
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -89,38 +84,32 @@ sub conn_s_396
 {
 	my ($n) = @_;
 
-	print("Generating con_${n}_s_396.fp...\n");
-	open(my $fp, ">con_${n}_s_396.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("con_${n}_s_396", "Connector CH $n S 3.96mm", "Cyril Hrubis");
+	fp::set_unit($fp, "um");
 
 	my $l = $n * 3960;
 
-	fp::begin("Connector $n S 3.96mm");
-	fp::set_unit("um");
+	fp::rect($fp, $l, 9800);
+	fp::hline($fp, 0, $l, 8400);
 
-	fp::rect($l, 9800);
-	fp::hline(0, $l, 8400);
+	fp::set_origin($fp, 1980, 5570);
 
-	fp::set_origin(1980, 5570);
-
-	pin_396(0, 0, "Pin_1", "1", "square");
+	pin_396($fp, 0, 0, "Pin_1", "1", "square");
 
 	for (my $i = 1; $i < $n; $i++) {
 		my $p = $i+1;
-		pin_396($i * 3960, 0, "Pin_$p", "$p", "");
+		pin_396($fp, $i * 3960, 0, "Pin_$p", "$p", "");
 	}
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 
 sub pin_396
 {
-	my ($x, $y, $name, $num, $flags) = @_;
+	my ($fp, $x, $y, $name, $num, $flags) = @_;
 
-	fp::pin($x, $y, 3000, 4000, 3000, 1700, $name, $num, $flags);
+	fp::pin($fp, $x, $y, 3000, 4000, 3000, 1700, $name, $num, $flags);
 }
 
 #
@@ -156,32 +145,26 @@ sub conn_r_254
 {
 	my ($n) = @_;
 
-	print("Generating con_${n}_r_254.fp...\n");
-	open(my $fp, ">con_${n}_r_254.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("con_${n}_r_254", "Connector $n R 2.54mm", "Cyril Hrubis");
+	fp::set_unit($fp, "um");
 
 	my $l = $n * 2540;
 
-	fp::begin("Connector $n R 2.54mm");
-	fp::set_unit("um");
+	fp::rect($fp, $l, 14200);
 
-	fp::rect($l, 14200);
+	fp::hline($fp, 0, $l, 8100);
+	fp::hline($fp, 0, $l, 11400);
 
-	fp::hline(0, $l, 8100);
-	fp::hline(0, $l, 11400);
+	fp::set_origin($fp, 1270, 12880);
 
-	fp::set_origin(1270, 12880);
-
-	pin_254(0, 0, "Pin_1", "1", "square");
+	pin_254($fp, 0, 0, "Pin_1", "1", "square");
 
 	for (my $i = 1; $i < $n; $i++) {
 		my $p = $i+1;
-		pin_254($i * 2540, 0, "Pin_$p", "$p", "");
+		pin_254($fp, $i * 2540, 0, "Pin_$p", "$p", "");
 	}
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 #
@@ -198,37 +181,31 @@ sub conn_s_254
 {
 	my ($n) = @_;
 
-	print("Generating con_${n}_s_254.fp...\n");
-	open(my $fp, ">con_${n}_s_254.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("con_${n}_s_254", "Connector $n S 2.54mm", "Cyril Hrubis");
+	fp::set_unit($fp, "um");
 
 	my $l = $n * 2540;
 
-	fp::begin("Connector $n S 2.54mm");
-	fp::set_unit("um");
+	fp::rect($fp, $l, 5800);
+	fp::hline($fp, 0, $l, 5000);
 
-	fp::rect($l, 5800);
-	fp::hline(0, $l, 5000);
+	fp::set_origin($fp, 1270, 3260);
 
-	fp::set_origin(1270, 3260);
-
-	pin_254(0, 0, "Pin_1", "1", "square");
+	pin_254($fp, 0, 0, "Pin_1", "1", "square");
 
 	for (my $i = 1; $i < $n; $i++) {
 		my $p = $i+1;
-		pin_254($i * 2540, 0, "Pin_$p", "$p", "");
+		pin_254($fp, $i * 2540, 0, "Pin_$p", "$p", "");
 	}
 
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::end($fp);
 }
 
 sub pin_254
 {
-	my ($x, $y, $name, $num, $flags) = @_;
+	my ($fp, $x, $y, $name, $num, $flags) = @_;
 
-	fp::pin($x, $y, 1400, 1700, 2000, 800, $name, $num, $flags);
+	fp::pin($fp, $x, $y, 1400, 1700, 2000, 800, $name, $num, $flags);
 }
 
 #
@@ -236,17 +213,12 @@ sub pin_254
 #
 sub conn_1
 {
-	print("Generating con_1.fp...\n");
-	open(my $fp, ">con_1.fp") or die $!;
-	select $fp;
+	my $fp = fp::begin("con_1", "Connector 1 pin", "Cyril Hrubis");
+	fp::set_unit($fp, "um");
 
-	fp::begin("Connector 1 pin");
-	fp::set_unit("um");
-	fp::circle(1000);
-	pin_254(0, 0, "Pin_1", "1", "square");
-	fp::end("Cyril Hrubis");
-	select STDOUT;
-	close($fp);
+	fp::circle($fp, 1000);
+	pin_254($fp, 0, 0, "Pin_1", "1", "square");
+	fp::end($fp);
 }
 
 for (my $i = 2; $i <= 13; $i++) {
