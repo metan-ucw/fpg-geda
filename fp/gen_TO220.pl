@@ -17,7 +17,7 @@ sub pin
 {
 	my ($fp, $x, $y, $nr, $type) = @_;
 
-	fp::pin($fp, $x, $y, 1400, 1700, 2000, 800, "Pin_$nr", "$nr", $type);
+	fp::pin($fp, $x, $y, 1400, 1700, 2000, 800, "Pin_$nr", "$nr", $type . "|long");
 }
 
 sub rect
